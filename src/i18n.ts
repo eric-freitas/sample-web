@@ -7,7 +7,7 @@ i18n
 	.use(initReactI18next)
 	.init({
 		backend: {
-			loadPath: 'sample-web/locales/{{lng}}/{{ns}}.json'
+			loadPath: './locales/{{lng}}/{{ns}}.json'
 		},
 		fallbackLng: 'es',
 		debug: false,
