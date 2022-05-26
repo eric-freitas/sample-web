@@ -1,28 +1,33 @@
 {
     "main": {
-        "position": "Developer"
+        "name": "Falabella"
     },
-    "menu": {
-        "skills": "Skills",
-        "experience": "Experience"
+    "errors":{
+        "title" :{
+            "invalid-data"      : "Invalid Data",
+            "permission-denied" : "Permission Denied",
+            "payment-required"  : "Payment Required",
+            "access-forbidden"  : "Access Forbidden",
+            "not-found"         : "Not Found",
+            "not-allowed"       : "Not Allowed",
+            "invalid-auth"      : "Invalid Authentication",
+            "timeout"           : "Timeout",
+            "info-conflict"     : "Information Conflict",
+            "gone"              : "It's Gone...",
+            "invalid-server"    : "Invalid Server",
+            "too-many-requests" : "Too Many Requests",
+            "legal-issues"      : "Legal Issues",
+            "server-issues"     : "Server Issues",
+            "server-unavail"    : "Server Unavailable",
+            "generic"           : "Unknown Error"
+        }
     },
-    "experience": {
-        "education": "Education",
-        "concluded": "Completed in %1",
-        "professional": "Experience"
-    },
-    "misc": {
-        "today": "Today"
-    },
-    "info": {
-        "title": "About this site",
-        "text": [
-            "This page was developed in React with Typescript and is hosted on an AWS Amplify, connected directly to the GitHub repository.",
-            "Its content is stored in PostgreSQL, MongoDB and Elastic databases, all cloud based.",
-            "To retrieve it, the front-end calls Azure Functions written in Node.js, also with TypeScript.",
-            "",
-            "The complete source code can be found %link%."
-        ],
-        "link": "here"
+    "dev-tools" : {
+        "title": "Developer Tools",
+        "trigger-error": {
+            "title" : "Trigger Error Message",
+            "type": "Type",
+            "button" : "Show"
+        }
     }
 }
