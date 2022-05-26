@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/sample-web/static/css/main.634f5a1c.chunk.css",
+    "main.js": "/sample-web/static/js/main.19da1f43.chunk.js",
+    "main.js.map": "/sample-web/static/js/main.19da1f43.chunk.js.map",
+    "runtime-main.js": "/sample-web/static/js/runtime-main.c1c22c28.js",
+    "runtime-main.js.map": "/sample-web/static/js/runtime-main.c1c22c28.js.map",
+    "static/js/2.4cfd9eaa.chunk.js": "/sample-web/static/js/2.4cfd9eaa.chunk.js",
+    "static/js/2.4cfd9eaa.chunk.js.map": "/sample-web/static/js/2.4cfd9eaa.chunk.js.map",
+    "index.html": "/sample-web/index.html",
+    "static/css/main.634f5a1c.chunk.css.map": "/sample-web/static/css/main.634f5a1c.chunk.css.map",
+    "static/js/2.4cfd9eaa.chunk.js.LICENSE.txt": "/sample-web/static/js/2.4cfd9eaa.chunk.js.LICENSE.txt",
+    "static/media/fonts.scss": "/sample-web/static/media/Raleway-ThinItalic.9a11bb6e.eot",
+    "static/media/getFetch.cjs": "/sample-web/static/media/getFetch.582d29c4.cjs"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c1c22c28.js",
+    "static/js/2.4cfd9eaa.chunk.js",
+    "static/css/main.634f5a1c.chunk.css",
+    "static/js/main.19da1f43.chunk.js"
+  ]
+}
