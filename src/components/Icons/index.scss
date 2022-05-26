@@ -9,7 +9,10 @@
 
     svg {
         fill-rule: evenodd;
-
+        height: 32px;
+        width: auto;
+        aspect-ratio: 1;
+        
         .smiley {
             .smiley_bg {
                 fill: none;

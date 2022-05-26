@@ -33,7 +33,7 @@ export default abstract class BaseIcon extends React.Component<BaseIconProps> {
 
         return  (
             <Icon className={classToApply} {...otherProps}>
-                <svg viewBox={`0 0 ${width} ${height}`}>
+                <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`}>
                     {content}
                     {slashed && <SlashIcon width={width} height={height} />}
                 </svg>
