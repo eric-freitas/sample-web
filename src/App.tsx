@@ -22,7 +22,7 @@ export default function App() {
 				<section>
 					<ApiStatusLoading />
 					
-					<BrowserRouter>
+					<BrowserRouter basename='sample-web'>
 						<Routes />
 					</BrowserRouter>
 
