@@ -34,9 +34,7 @@ export default function Home(){
 
                 <form>
                     <Dropdown id="chiste" label="Chiste">
-                            <option>A</option>
-                            <option>B</option>
-                            <option>C</option>
+                    { ["A", "B", "C", "D"] }
                     </Dropdown>
 
                     <Dropdown id="dis-dd" value="Dois" label="Desabilitado" status={FormFieldStatus.Disabled}>
@@ -46,8 +44,7 @@ export default function Home(){
                     <Dropdown 
                         leadingIcon={<IconTimeout/>}
                         id="con-icone"  label="Com Ícone" >
-                            <option>Este</option>
-                            <option>Ou Aquele</option>
+                            { ["Este", "Ou Aquele"] }
                     </Dropdown>
 
                     <Dropdown 
@@ -55,9 +52,7 @@ export default function Home(){
                         prefix="Prefixo"
                         suffix="Sufixo"
                         id="con-tudo"  label="Com um monte de tranqueira" >
-                            <option>Este</option>
-                            <option>Ou Aquele</option>
-                            <option>Ou Mais Esse</option>
+                            { ["Este", "Ou Aquele", "Ou Mais Esse"] }
                     </Dropdown>
                     
                     <Dropdown id="dis-dd2" value="Dois" label="Com mais uma ajuda" helperText='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'>
