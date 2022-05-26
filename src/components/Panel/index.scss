@@ -49,6 +49,9 @@
             aspect-ratio: 1;
             box-sizing: border-box;
             height: calc($def-padding * 3);
+            svg {
+                height: calc($def-padding * 3);
+            }
         }
     }
     

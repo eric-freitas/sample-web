@@ -79,6 +79,9 @@ form {
 
             .icon-required {
                 height: calc($def-padding * 2);
+                svg {
+                    height: calc($def-padding * 2);
+                }
                 fill  : var(--fieldset-required-color);
             }
             
