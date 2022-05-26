@@ -1,0 +1,37 @@
+@import '../../shared.scss';
+
+.error-msg {
+    background-color: $red;
+
+    > div {
+        display: inline-block;
+    }
+
+    aside {
+        vertical-align: top;
+        display: inline-block;
+        padding: 0 $def-padding;
+    }
+
+    section {
+        display: inline-block;
+
+        .error-msg__header  {
+            background-color: initial;
+            
+            padding: calc($def-padding / 4);
+            padding-bottom: 0;
+            
+            @include font-title();
+
+            @include size(auto, 32px, 32px);
+
+            vertical-align: middle;
+            box-sizing: content-box;
+        }
+
+        .error-msg__body {
+            padding: calc($def-padding / 4);
+        }
+    }
+}

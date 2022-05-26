@@ -1,0 +1,250 @@
+@use "sass:meta";
+@use "sass:map";
+
+$font-raleway : "Raleway", "Roboto", "Helvetica", Futura, sans-serif;
+$font-poppins : "Poppins", "Helvetica", Arial, sans-serif;
+
+$def-padding 	  : 8px;
+$def-radius 	  : 2rem;
+$def-border-width : 1px;
+
+$white	  : #fff !default;
+$gray-100 : #f8f9fa !default;
+$gray-200 : #e9ecef !default;
+$gray-300 : #dee2e6 !default;
+$gray-400 : #ced4da !default;
+$gray-500 : #adb5bd !default;
+$gray-600 : #6a737d !default;
+$gray-700 : #495057 !default;
+$gray-800 : #343a40 !default;
+$gray-900 : #212529 !default;
+$black	  : #000 !default;
+
+$blue	 	 : #1a8fe3 !default;
+$indigo	 	 : #6610f2 !default;
+$purple	 	 : #3a1d6e !default;
+$pink	 	 : #e83e8c !default;
+$red	 	 : #dc3545 !default;
+$red-lighter : #F25B69 !default;
+$orange	 	 : #fd7e14 !default;
+$apricot 	 : #db8f00 !default;
+$yellow	 	 : #ffc107 !default;
+$green	 	 : #28a745 !default;
+$teal	 	 : #20c997 !default;
+$cyan	 	 : #17a2b8 !default;
+$brown	 	 : #564D50 !default;
+
+$break-small	: 600px;
+$break-medium	: 800px;
+$break-large	: 1200px;
+
+$def-bg : #121212;
+$def-font-color : $gray-200;
+
+$def-fieldset-border: #b9bbbe;
+$def-panel-border: $blue;
+
+$def-panel-bg : #36393f;
+$def-header-bg : #36393f;
+
+$def-level2-bg: #40444b;
+$def-level3-bg: #3a2d49;
+$disabled-bg: #2d2d2d;
+$disabled-color: #919398;
+
+@mixin color ($color) {
+	color : $color;
+	fill  : $color;
+	border-color : $color;
+}
+
+@mixin def-font {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	@include color($def-font-color);
+}
+
+@mixin font-normal {
+	@include def-font();
+
+	font-family: $font-raleway;
+	font-size: 1em;
+	font-weight: 300;
+}
+
+@mixin font-title {
+	@include def-font();
+
+	font-family: $font-poppins;
+	font-weight: 300;
+	font-size: 1.15em;
+}
+
+@mixin font-subtitle {
+	@include def-font();
+
+	font-family: $font-raleway;
+	font-weight: 500;
+	font-size: 1em;
+}
+
+@mixin def-border($width: $def-border-width, $border-color: $def-font-color) {
+	border : $width solid $border-color;
+}
+
+@mixin round-corner-box($width: $def-border-width, $corner: calc($def-padding / 2)) {
+	@include def-border();
+
+	box-sizing: border-box;
+	outline: 0;
+	border-radius: $corner;
+}
+
+@mixin transparent-box {
+	@include round-corner-box();
+	background-color: transparent;
+	color: $def-font-color;
+}
+
+@mixin vertical-split {
+	display: flex;
+	flex-wrap: nowrap;
+	align-content: flex-start;
+	justify-content: space-between;
+	align-items: flex-start;
+	flex-direction: row;
+	column-gap: $def-padding;
+}
+
+@mixin size ($width, $height : 0, $line-height : 0) {
+	width: $width;
+	
+	@if $height != 0 {
+		height: $height;
+	}
+	
+	@if $line-height != 0 {
+		line-height: $line-height;
+	}
+}
+
+@mixin absolute-pos ($args...) {
+
+	@each $name, $val in meta.keywords($args) {
+		@if $name == 'top' {
+			top		: $val;
+		} @else if $name == 'bottom' {
+			bottom	: $val;
+		} @else if $name == 'left' {
+			left 	: $val;
+		} @else if $name == 'right' {
+			right 	: $val;
+		}
+	}
+
+	position: absolute;
+}
+
+
+@mixin hover-darken($prop, $color, $amount: 33%) {
+    #{$prop} : $color;
+    &:hover {
+        #{$prop} : darken($color, $amount);
+    }
+}
+
+
+@mixin shadow {
+	box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+	transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);	
+}
+
+@function def-val($val, $def) {
+	@return #{if($val == null, $def, $val)};
+}
+
+@function def-to-0px($val) {
+	@return def-val($val, 0px);
+}
+
+@function horizontal-sides($val) {
+	@return (left: def-to-0px($val), right: def-to-0px($val));
+}
+
+@function vertical-sides($val) {
+	@return (top: def-to-0px($val), bottom: def-to-0px($val));
+}
+
+@function all-sides($val) {
+	@return map.merge(horizontal-sides($val), vertical-sides($val));
+}
+
+@mixin clickable {
+    user-select: none;
+    cursor: pointer;
+}
+
+@mixin click-effect ($border, $margin, $offset) {
+	@include clickable();
+	@include def-border();
+
+    $border-top     : def-to-0px( map.get($border, "top"	) );
+    $border-bottom  : def-to-0px( map.get($border, "bottom" ) );
+    $border-right   : def-to-0px( map.get($border, "right"	) );
+    $border-left    : def-to-0px( map.get($border, "left"	) );
+
+    border-width : $border-top $border-right $border-bottom $border-right;
+
+    $margin-top     : def-to-0px( map.get($margin, "top"	) );
+    $margin-bottom  : def-to-0px( map.get($margin, "bottom" ) );
+    $margin-right   : def-to-0px( map.get($margin, "right"	) );
+    $margin-left    : def-to-0px( map.get($margin, "left"	) );
+
+    margin : $margin-top calc($margin-right + $offset) calc($margin-bottom + $offset) $margin-left;
+
+	&:last-child {
+		margin-right: $offset;
+	}
+
+    &:active {
+        position: relative;
+        
+        top: $offset;
+        left: $offset;
+        
+        border-bottom-width: $border-bottom !important;
+        border-right-width: $border-right !important;
+        
+        margin-bottom: calc($margin-bottom + $offset) !important;
+		margin-right: calc($margin-right + $offset) !important;
+		&:last-child {
+        	margin-right: 0 !important;
+		}
+
+    }
+
+    &:not(.borderless):hover {
+        border-bottom-width: calc($border-bottom + $offset);
+        border-right-width: calc($border-right + $offset);
+
+        margin-bottom: $margin-bottom;
+        margin-right: $margin-right;
+
+		&:last-child {
+        	margin-right: $offset !important;
+		}
+
+    }
+}
+
+@mixin borderless-click-effect {
+	@include clickable();
+	@include def-border();
+
+	border-color : transparent;
+
+    &:hover {
+        border-color: $def-font-color;
+    }
+
+}

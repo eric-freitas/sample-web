@@ -1,0 +1,63 @@
+@use 'sass:color';
+@import '../../shared.scss';
+
+.dropdown {
+    position: relative;
+    margin: $def-padding 0;
+
+    fieldset {
+        margin : 0;
+
+        &.selected{
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            border-color : var(--fieldset-border);
+            border-bottom: none;
+            legend {
+                margin-left: calc($def-padding / 2);
+            }
+        }
+
+        & + .options {
+            @include round-corner-box();
+            border-color : var(--fieldset-border);
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+
+            position: absolute;
+            left : 0;
+            right: 0;
+            
+            background-color: $def-font-color;
+            color : $def-panel-bg;
+            
+            margin: 0;
+            padding: 0;
+
+            list-style: none;
+            z-index: 100;
+
+            li{
+                border: none;
+                padding: calc($def-padding /2) $def-padding;
+                &:hover{
+                    background-color:  var(--fieldset-bg);
+                    color : var(--fieldset-color);
+                }
+
+                &:last-child {
+                    border-bottom-left-radius: calc($def-padding / 2);
+                    border-bottom-right-radius: calc($def-padding / 2);
+                    border-top-left-radius: 0;
+                    border-top-right-radius: 0;
+                }
+
+                span.dropdown__simple-item {
+                    min-height: 18px;
+                    display: inline-block;
+                    box-sizing: border-box;
+                }
+            }
+        }
+    }
+}

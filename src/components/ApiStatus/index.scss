@@ -1,0 +1,10 @@
+@import '../../shared.scss';
+
+.api-status{
+    @include absolute-pos($top: 2px, $left: 8px);
+
+    @include color ($blue);
+
+    z-index: 1010;
+    padding: calc($def-padding / 2);
+}

@@ -1,0 +1,25 @@
+@import '../../shared.scss';
+
+$button-border: $def-border-width;
+
+.button {
+    @include font-normal();
+    @include transparent-box();
+   
+    @include click-effect (
+        all-sides($button-border),
+        horizontal-sides($def-padding),
+        $button-border
+    );
+
+    display: inline-flex;
+    padding: calc($def-padding / 2) $def-padding;
+
+    &.borderless {
+        @include borderless-click-effect();
+    }
+
+    & > * {
+        display: inline-flex;
+    }
+}

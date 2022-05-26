@@ -1,0 +1,75 @@
+{
+  "name": "sample-web",
+  "version": "1.0.0",
+  "description": "sample react web app",
+  "homepage": "https://eric-freitas.github.io/sample-web",
+  "author": {
+    "name": "Eric de Freitas Matos",
+    "email": "eric.freitas.matos@gmail.com",
+    "url": "https://ericdefreitas.com.br"
+  },
+  "private": true,
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.8.1",
+    "@testing-library/jest-dom": "^5.11.5",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^12.19.3",
+    "@types/react": "^16.9.55",
+    "@types/react-dom": "^16.9.9",
+    "axios": "^0.21.1",
+    "gh-pages": "^4.0.0",
+    "i18next": "^20.3.3",
+    "i18next-http-backend": "^1.2.6",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-i18next": "^11.11.2",
+    "react-markdown": "^5.0.3",
+    "react-redux": "^7.2.2",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.3",
+    "redux": "^4.0.5",
+    "sass": "^1.28.0",
+    "typescript": "^4.0.5",
+    "web-vitals": "^0.2.4"
+  },
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "jest",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "@babel/preset-typescript": "^7.16.7",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@types/react-redux": "^7.1.9",
+    "@types/react-router-dom": "^5.1.6",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "jest-extended": "^2.0.0",
+    "react-test-renderer": "^18.0.0",
+    "regenerator-runtime": "^0.13.9"
+  }
+}

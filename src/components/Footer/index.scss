@@ -1,0 +1,13 @@
+@import '../../shared.scss';
+
+.footer {
+    @include absolute-pos($bottom: 0, $left: 0, $right: 0);
+
+    display: block;
+    
+    border: none ; 
+    margin: 0;
+    padding: $def-padding;
+    box-sizing: border-box;
+    z-index : 1000;
+}

@@ -1,0 +1,77 @@
+@import './shared.scss';
+
+html{
+    height: 100%;
+}
+
+body {
+    @include font-normal();
+    height: 100%;
+
+    @include color($def-font-color);
+
+    margin: 0;
+    padding: 0;
+    background-color: $def-bg;
+
+    display: flex;
+    align-items: stretch;
+}
+
+#root {
+    width: 100%
+}
+
+h1, h2, h3, .title, .strong {
+    @include font-title();
+}
+
+h4, h5, h6, strong, .strong {
+    @include font-subtitle();
+}
+
+h1 {
+    font-size: 1.5em;
+}
+
+h3 {
+    font-size: 1.1em;
+}
+
+small {
+    font-size: 0.9em;
+    font-weight: 100;
+}
+
+main {
+    @include vertical-split();
+    width: 100%;
+    height: 100%;
+
+    & > section {
+        width: 100%;
+        display: block;
+        position: relative;
+        height: 100%;
+    }
+}
+
+.page { 
+    padding: 0 calc($def-padding * 4);
+    position: relative;
+}
+
+.align-center {
+    text-align: center;    
+}
+
+
+.flip-horizontal {
+    transform: scale(-1,1);
+}
+
+.flip-vertical {
+    transform: scale(1,-1);
+}
+
+

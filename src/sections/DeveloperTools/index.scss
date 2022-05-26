@@ -1,0 +1,39 @@
+@import '../../shared.scss';
+
+
+.dev-tools {
+    z-index : 1001;
+    height: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    
+    & > section {
+
+        height: calc(100% - calc(calc($def-padding * 6) + 2px));
+
+        .panel__content {
+            height: calc(100% - calc(calc($def-padding * 2) - 2px));
+            overflow: auto;
+        }
+    }
+
+    .dev-tools__trigger-error {
+        background-color: $orange;
+
+        $dt__te__dropdown--bg: lighten($orange, 10%);
+
+        .dropdown {
+            --fieldset-bg : #{$dt__te__dropdown--bg};
+            --fieldset-border: #{$def-font-color};
+            --fieldset-color: #{$gray-100};
+        }
+    }
+
+    .button {
+        padding-left: calc($def-padding * 2);
+        padding-right: calc($def-padding * 2);
+    }
+
+
+    
+}

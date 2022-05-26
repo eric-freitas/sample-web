@@ -1,0 +1,42 @@
+@import '../../shared.scss';
+
+.icon {
+    display: inline-block;
+
+    height: 32px;
+    width: auto;
+    aspect-ratio: 1;
+
+    svg {
+        fill-rule: evenodd;
+
+        .smiley {
+            .smiley_bg {
+                fill: none;
+            }
+        }
+    }
+}
+
+@keyframes animate-spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@mixin spin-animation {
+    animation: animate-spinner 2s infinite linear;
+}
+
+.spinner {
+    @include spin-animation();
+}
+
+.step-spinner {
+    @include spin-animation();
+    animation-timing-function: steps(8);
+}
+

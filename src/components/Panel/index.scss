@@ -1,0 +1,65 @@
+@import '../../shared.scss';
+
+.panel {
+    @include round-corner-box(0px, $def-padding);
+    border : none;
+    background-color: $def-header-bg;
+    margin: $def-padding 0;
+
+    &.box {
+        header {
+            border-bottom: none;
+            h2 {
+                @include font-subtitle();
+            }
+        }
+
+        .panel__content {
+            background-color: initial;
+            display: contents;
+        }
+    }
+
+    header {
+        @include vertical-split();
+        align-items: center;
+        margin: 0;
+        padding: calc($def-padding / 2) $def-padding ;
+        padding-right: calc($def-padding / 2);
+        border-top-left-radius: $def-padding;
+        border-top-right-radius: $def-padding;
+        border-bottom: $def-border-width solid $def-panel-border;
+        white-space: nowrap;
+
+        button {
+            padding: calc($def-padding / 2);
+        }
+
+        .panel__title {
+            display: flex;
+            align-items: center;
+            column-gap: calc($def-padding / 2);
+            & > * {
+                margin: 0;
+            }
+        }
+
+        .icon {
+            width: auto;
+            aspect-ratio: 1;
+            box-sizing: border-box;
+            height: calc($def-padding * 3);
+        }
+    }
+    
+    section {
+        padding: calc($def-padding / 2);
+        padding-top: 0;
+        .panel__content {
+            border-bottom-left-radius: calc($def-padding / 2);
+            border-bottom-right-radius: calc($def-padding / 2);
+            background-color: $def-panel-bg;
+            padding: $def-padding;
+        }
+    }
+}

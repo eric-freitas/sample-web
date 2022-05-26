@@ -1,0 +1,136 @@
+@import '../../shared.scss';
+
+:root {
+    --fieldset-bg               : #{$def-level2-bg};
+    --fieldset-color            : #{$def-font-color};
+    --fieldset-border           : #{$def-fieldset-border};
+    --fieldset-disabled-bg      : #{$disabled-bg};
+    --fieldset-disabled-color   : #{$disabled-color};
+    --fieldset-valid-color      : #{$green};
+    --fieldset-invalid-color    : #{$red-lighter};
+    --fieldset-required-color   : #{$apricot};
+}
+
+form {
+    fieldset {
+        @include round-corner-box();
+        @include color(var(--fieldset-color));
+        border-color: var(--fieldset-bg);
+        background-color: var(--fieldset-bg);
+
+        user-select: none;
+        display: block;
+        
+        margin: $def-padding 0;
+        padding: 0;
+        
+        &[name='buttons'] {
+            margin-top: $def-padding;
+            background-color: transparent;
+            border: none;
+        }
+
+        &:hover:not(.disabled){
+            border-color : var(--fieldset-border);
+        }
+
+        &.valid, &.invalid {
+            border-bottom-left-radius: 0;
+            border-top-left-radius: 0;
+            border-left-width: calc($def-border-width * 2);
+        }
+        &.valid {
+            border-left-color: var(--fieldset-valid-color) !important;
+            label, legend {
+                .icon-required {
+                    fill  : var(--fieldset-valid-color);
+                }
+            }
+        }
+        &.invalid {
+            border-left-color: var(--fieldset-invalid-color) !important;
+            label, legend {
+                .icon-required {
+                    fill  : var(--fieldset-invalid-color);
+                }
+            }
+        }
+
+        &.disabled {
+            @include color(var(--fieldset-disabled-color));
+            background-color: var(--fieldset-disabled-bg);
+            border-color: var(--fieldset-disabled-bg);
+
+            & * {
+                cursor: not-allowed;
+                user-select: none;
+            }
+            
+
+            input, .input {
+                color : var(--fieldset-color);
+            }
+        }
+
+        label, legend {
+            margin: calc($def-padding/4) $def-padding;
+            font-size: 0.9em;
+            display: block;
+
+            .icon-required {
+                height: calc($def-padding * 2);
+                fill  : var(--fieldset-required-color);
+            }
+            
+        }
+
+        .form-field {
+            @include vertical-split();
+            align-items: center;
+            padding: calc($def-padding /2) $def-padding;
+            min-height: calc($def-padding * 4);
+
+            .form-field__content {
+                display: inline-flex;
+                flex-direction: row;
+                align-items: center;
+                flex-wrap: nowrap;
+                column-gap: $def-padding;
+
+                small {
+                    --color : var(--fieldset-disabled-color);
+                }
+
+                &.form-field__content_initial {
+                    width: 100%;
+                }
+            }
+
+
+            input, textarea {
+                @include font-normal();
+                width: 100%;
+                border: none;
+                outline: none;
+                background-color: var(--fieldset-bg);
+                padding: 0;
+                margin: 0;
+
+                &:disabled{
+                    background-color: initial;
+                }
+            }
+        }
+
+    }
+
+    .form-field__helper, .form-field__invalid-text {
+        display: block;
+        margin: calc($def-padding / 2) $def-padding;
+    }
+    .form-field__invalid-text {
+        color: var(--fieldset-invalid-color);
+        font-weight: 300;
+    }
+
+}
