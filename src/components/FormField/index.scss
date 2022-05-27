@@ -87,6 +87,10 @@ form {
                 &.form-field__content_initial {
                     width: 100%;
                 }
+
+                small {
+                    white-space: nowrap;
+                }
             }
         }
 

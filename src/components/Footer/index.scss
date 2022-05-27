@@ -2,6 +2,7 @@
 
 .footer {
     @include absolute-pos($bottom: 0, $left: 0, $right: 0);
+    position: sticky;
 
     display: block;
     

@@ -48,6 +48,7 @@ main {
         display: block;
         position: relative;
         height: 100%;
+        overflow: auto;
     }
 }
 
@@ -68,5 +69,29 @@ main {
 .flip-vertical {
     transform: scale(1,-1);
 }
+
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: $purple-darker $def-level2-bg;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: calc($def-padding * 2);
+  }
+
+  *::-webkit-scrollbar-track {
+    background: $def-level2-bg;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: $purple-darker;
+    border-radius: $def-padding;
+    border: 1px solid $def-level2-bg;
+  }
+
 
 
