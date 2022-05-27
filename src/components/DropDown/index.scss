@@ -3,8 +3,6 @@
 
 .dropdown {
     position: relative;
---margin: $def-padding 0;
-
     fieldset {
         &.selected{
             border-bottom-left-radius: 0;

@@ -2,6 +2,7 @@ import React, { Children, ReactNode, useEffect, useState } from 'react';
 import { appendClassNames } from '../../static/utils';
 import FormField, { BaseFormFieldProps, FormFieldStatus } from '../FormField';
 import IconChevron from '../Icons/Chevron';
+import RenderIfTrue from '../RenderIfTrue';
 
 import './index.scss';
 
@@ -80,20 +81,26 @@ const Dropdown: React.FC<DropdownProps> = ( props ) =>  {
         );
     }
 
-    const dropdownOptions = show ? <ul key="options" className='options'>{Children.map(children, renderChild)}</ul> : null;
+    const flipChevron = show ? "flip-vertical": "";
 
     return (
         <div className='dropdown'>
             <FormField 
                 {...props}
                 
-                fieldClassName = { appendClassNames(fieldClassName, "select") }
                 onClick        = { onClick   } 
                 status         = { status    }
                 invalid        = { isInvalid }
+                fieldClassName = { appendClassNames(fieldClassName, "select"           ) }
                 className      = { appendClassNames(className, show ? "selected" : null) }
-                trailingIcon   = { trailingIcon ?? <IconChevron className={show ? "flip-vertical": ""} />}
-                siblings       = { dropdownOptions }
+                trailingIcon   = { <RenderIfTrue condition={!!trailingIcon} >
+                                        <IconChevron className={flipChevron} />
+                                   </RenderIfTrue>                                       }
+                siblings       = { <RenderIfTrue condition={show} >
+                                        <ul key="options" className='options'>
+                                            { Children.map(children, renderChild) }
+                                        </ul>
+                                   </RenderIfTrue>                                       }
             >
                 <span id={id} className='input-area input'>
                     {selected}
