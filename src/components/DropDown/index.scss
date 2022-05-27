@@ -3,11 +3,9 @@
 
 .dropdown {
     position: relative;
-    margin: $def-padding 0;
+--margin: $def-padding 0;
 
     fieldset {
-        margin : 0;
-
         &.selected{
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
@@ -32,6 +30,7 @@
             color : $def-panel-bg;
             
             margin: 0;
+            margin-top: calc($def-padding * -1);
             padding: 0;
 
             list-style: none;

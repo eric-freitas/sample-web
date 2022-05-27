@@ -1,0 +1,9 @@
+@import '../../shared.scss';
+
+label, legend {
+    margin: calc($def-padding/4) $def-padding;
+    font-size: 0.9em;
+    display: block;
+
+    @include icon-size(calc($def-padding * 2));
+}

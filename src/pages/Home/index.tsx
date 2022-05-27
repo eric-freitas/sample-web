@@ -12,10 +12,12 @@ import IconServer from '../../components/Icons/Server';
 import TextInput from '../../components/TextInput';
 import IconEdit from '../../components/Icons/Edit';
 import IconLoading from '../../components/Icons/Loading';
+import IconMoney from '../../components/Icons/Money';
 
 export default function Home(){
 
     return (
+        /* TODO page overflow */
 
         <section className="page home">
             <h1>TESTE</h1>
@@ -78,6 +80,21 @@ export default function Home(){
                     </Dropdown>
 
                     <TextInput text="" label='Teste' trailingIcon={<IconEdit/>} prefix="Teste" suffix='kg' leadingIcon={<IconLoading/>} invalidText="Preencha corretamente" required />
+
+                    <TextInput 
+                        className="jest-input" label='jest'
+                        fieldClassName='jest-field-class'
+                        helperText='Jest Helper'
+                        id='jest-id'
+                        invalid
+                        invalidText='Jest Invalid Text'
+                        leadingIcon={<IconMoney/>}
+                        prefix='Jest Prefix'
+                        required
+                        suffix='Jest Suffix'
+                        text='Error Text'
+                        trailingIcon={<IconMoney/>}
+                    />
                 </form>
             </Panel>
 

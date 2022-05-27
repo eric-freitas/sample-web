@@ -1,8 +1,9 @@
 import React from 'react';
-import { wrapText, joinClassNames, SimpleCallback } from '../../static/utils';
-import ConditionalRendering from '../ConditionalRendering';
+import { SimpleCallback, appendClassNames } from '../../static/utils';
+import FormFieldLabel from '../FormFieldLabel';
 import IconRequired from '../Icons/Required';
 import RenderIfTrue from '../RenderIfTrue';
+import SmallText from '../SmallText';
 
 import './index.scss';
 
@@ -53,43 +54,39 @@ export default function FormField(props: FormFieldProps) {
         onClick 
     } = props ?? {};
 
-    const fieldsetClassName = joinClassNames([ 
+    const fieldsetClassName = appendClassNames( 
         className, 
         status === FormFieldStatus.Disabled ? "disabled" : null ,
         invalid ? "invalid" : (valid ? "valid" : null)
-    ]);
+    );
 
     return (<>
                 <fieldset className={fieldsetClassName} onClick={onClick}>
-                    <label>
-                        {label}
-                        <RenderIfTrue condition={!!required}>
-                            <IconRequired/>
-                        </RenderIfTrue>
-                    </label>
+                    <FormFieldLabel
+                        text         = { label }
+                        trailingIcon = { <RenderIfTrue condition={!!required}><IconRequired/></RenderIfTrue> }
+                    />
                         
-                    <div className={joinClassNames(["form-field", fieldClassName])}>
+                    <div className={appendClassNames(fieldClassName, "form-field")}>
                         <span className='form-field__content form-field__content_initial'>
                             {leadingIcon}
-                            {wrapText(prefix, "small")}
+                            <SmallText>{prefix}</SmallText>
                             {children}
                         </span>
-                        <ConditionalRendering
-                            condition = {!!(suffix && trailingIcon)}
-                            ifTrue    = {<span className='form-field__content'>
-                                            {wrapText(suffix, "small")}
-                                            {trailingIcon}
-                                        </span>}
-                            ifFalse   = { suffix || trailingIcon || null}
-                        />
+                        <RenderIfTrue condition={!!(suffix || trailingIcon)}>
+                            <span className='form-field__content'>
+                                <SmallText>{suffix}</SmallText>
+                                {trailingIcon}
+                            </span>
+                        </RenderIfTrue>
                     </div>
                 </fieldset>
 
                 {siblings}
                 
-                {wrapText(helperText, "small", { className: "form-field__helper"})}
+                <SmallText className="form-field__helper">{helperText}</SmallText>
                 <RenderIfTrue condition={!!(invalid && invalidText)}>
-                    {wrapText(invalidText, "small", { className: "form-field__invalid-text"})}
+                    <SmallText className="form-field__invalid-text">{invalidText}</SmallText>
                 </RenderIfTrue>
             </> );
 };

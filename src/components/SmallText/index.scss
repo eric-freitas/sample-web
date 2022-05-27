@@ -1,0 +1,9 @@
+@import '../../shared.scss';
+
+small {
+    font-family: $font-normal-text;
+    white-space: nowrap;
+
+    font-size: 0.9em;
+    font-weight: 100;
+}

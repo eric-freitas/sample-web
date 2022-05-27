@@ -10,8 +10,14 @@ export const defaultsToTrue = (expr?: boolean):boolean => {
 
 export type SimpleCallback = () => void;
 
-export const joinClassNames = (classes: (string | null | undefined)[]): string => {
-    return classes.filter(e => !!(e?.trim())).map(e => e?.replace(/\s+/g, "__")).join(" ");
+export type OptionalString = string | null | undefined;
+
+export const joinClassNames = (...args: OptionalString[]): string => {
+    return args.filter(e => !!(e?.trim())).map(e => e?.replace(/\s+/g, "__")).join(" ");
+}
+
+export const appendClassNames = (current: OptionalString, ...args: OptionalString[]): string => {
+    return `${current ?? ""} ${joinClassNames(...args)}`.trim();
 }
 
 export const wrapText = (text: string | null | undefined, tagName: string, props?: any): JSX.Element | null => {

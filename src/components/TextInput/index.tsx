@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRef } from 'react';
+import { appendClassNames } from '../../static/utils';
 import FormField, { BaseFormFieldProps, FormFieldStatus } from '../FormField';
 
 import './index.scss';
@@ -12,7 +13,7 @@ export interface TextInputProps extends BaseFormFieldProps {
 }
 
 const TextInput: React.FC<TextInputProps> = ( props ) =>  {
-    const { id, status, invalid, text, required } = props ?? {};
+    const { id, status, invalid, text, required, fieldClassName } = props ?? {};
     const disabled = status === FormFieldStatus.Disabled;
 
     const [ curValue , setCurValue  ] = useState<string>(text ?? "");
@@ -27,8 +28,10 @@ const TextInput: React.FC<TextInputProps> = ( props ) =>  {
 
     const onChange = (e:React.ChangeEvent<HTMLInputElement>) => {
         setChanged(true);
-        setCurValue(e.target.value);
-        props?.onChange?.call(this, curValue);
+        let { value } = e?.target ?? {};
+        value = value ?? "";
+        setCurValue(value);
+        props?.onChange?.call(this, value);
     }
 
     useEffect(() => {
@@ -39,9 +42,9 @@ const TextInput: React.FC<TextInputProps> = ( props ) =>  {
     return (
         <FormField 
             {...props}
-            invalid        = {isInvalid}
-            fieldClassName = "input"
-            onClick        = {onClick}
+            invalid        = { isInvalid }
+            onClick        = { onClick   }
+            fieldClassName = { appendClassNames(fieldClassName, "input") }
         >
             <input ref={inputElement} id={id} disabled={disabled} value={curValue} onChange={onChange}/>
         </FormField>

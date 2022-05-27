@@ -1,7 +1,7 @@
 import 'jest-extended/all';
 import ReactDOM from 'react-dom';
 import { act } from 'react-dom/test-utils';
-import { defaultsToTrue, wrapText, joinClassNames, sleep } from '../../src/static/utils';
+import { defaultsToTrue, wrapText, joinClassNames, sleep, appendClassNames } from '../../src/static/utils';
 
 describe("Utils Lib test",  () => {
 
@@ -11,7 +11,7 @@ describe("Utils Lib test",  () => {
         await sleep(2000);
         const elapsed = ((Date.now()) - before);
 
-        const condition = elapsed >= 1997 && elapsed <= 2003;
+        const condition = elapsed >= 1995 && elapsed <= 2005;
         expect(condition).toBe(true);
         
     });
@@ -30,14 +30,20 @@ describe("Utils Lib test",  () => {
     })
 
     it("should join a few class names", () => {
-        expect(joinClassNames([])).toBe("");
-        expect(joinClassNames(["only1"])).toBe("only1");
-        expect(joinClassNames(["one", "two"])).toBe("one two");
-        expect(joinClassNames(["this one", "and this too"])).toBe("this__one and__this__too");
-        expect(joinClassNames(["", null, "a", "  ", "b"])).toBe("a b");
+        expect(joinClassNames()).toBe("");
+        expect(joinClassNames("only1")).toBe("only1");
+        expect(joinClassNames("one", "two")).toBe("one two");
+        expect(joinClassNames("this one", "and this too")).toBe("this__one and__this__too");
+        expect(joinClassNames("", null, "a", "  ", "b")).toBe("a b");
+
+        expect(appendClassNames(null, "a", "b")).toBe("a b");
+        expect(appendClassNames("", "a", "b")).toBe("a b");
+        expect(appendClassNames(" ", "a", "b")).toBe("a b");
+        expect(appendClassNames("this", "a", "b")).toBe("this a b");
+        expect(appendClassNames("this that", "a", "b")).toBe("this that a b");
     })
 
-    it ("should embed an element", () => {
+    it ("should wrap an element", () => {
         let text = "Texto";
         let el = wrapText(text, "span");
         expect(el).not.toBeNull();

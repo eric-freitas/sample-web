@@ -1,15 +1,15 @@
 @import '../../shared.scss';
 
 .icon {
-    display: inline-block;
 
-    height: 32px;
+    height: $def-icon-size;
+    display: inline-block;
     width: auto;
     aspect-ratio: 1;
 
     svg {
+        height: $def-icon-size;
         fill-rule: evenodd;
-        height: 32px;
         width: auto;
         aspect-ratio: 1;
         

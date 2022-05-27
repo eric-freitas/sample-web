@@ -23,3 +23,9 @@ $button-border: $def-border-width;
         display: inline-flex;
     }
 }
+
+fieldset[name='buttons'] {
+    margin-top: $def-padding;
+    background-color: transparent;
+    border: none;
+}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState }               from 'react';
 import { cheatCoder } from '../../static/cheatCoder';
-import { joinClassNames, SimpleCallback } from '../../static/utils';
+import { appendClassNames, SimpleCallback } from '../../static/utils';
 import { CheatCodeRevealingProps } from '../CheatCodeRevealing';
 import IconButton from '../IconButton';
 import IconClose from '../Icons/Close';
@@ -25,8 +25,6 @@ interface PanelProps {
 
 const Panel: React.FC<PanelProps> = ({ children, ...props }) =>  {
     const { title, icon, closable, className, cheatCoded, onClose, type } = props;
-    const panelType = type === PanelType.Box ? "box" : null;
-
     const [ show, setShow ] = useState<boolean>(true);
 
     const onClick = () => {
@@ -49,7 +47,7 @@ const Panel: React.FC<PanelProps> = ({ children, ...props }) =>  {
 
     return (
         <RenderIfTrue condition={show}>
-            <article className={joinClassNames(["panel", className, panelType])}>
+            <article className={appendClassNames(className, "panel", type === PanelType.Box ? "box" : null)}>
                 
                 <header>
                     <span className='panel__title'>

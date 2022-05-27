@@ -1,5 +1,5 @@
 import React, { Children, ReactNode, useEffect, useState } from 'react';
-import { joinClassNames } from '../../static/utils';
+import { appendClassNames } from '../../static/utils';
 import FormField, { BaseFormFieldProps, FormFieldStatus } from '../FormField';
 import IconChevron from '../Icons/Chevron';
 
@@ -19,6 +19,7 @@ export interface DropdownProps extends BaseFormFieldProps {
 const Dropdown: React.FC<DropdownProps> = ( props ) =>  {
     const { 
         children, 
+        fieldClassName,
         id, 
         className, 
         status, 
@@ -84,11 +85,11 @@ const Dropdown: React.FC<DropdownProps> = ( props ) =>  {
             <FormField 
                 {...props}
                 
-                fieldClassName = "select"
+                fieldClassName = { appendClassNames(fieldClassName, "select") }
                 onClick        = { onClick   } 
                 status         = { status    }
                 invalid        = { isInvalid }
-                className      = { joinClassNames([className, show ? "selected" : null]) }
+                className      = { appendClassNames(className, show ? "selected" : null) }
                 trailingIcon   = { trailingIcon ?? <IconChevron className={show ? "flip-vertical": ""} />}
                 siblings       = { dropdownOptions }
             >

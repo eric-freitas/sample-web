@@ -4,9 +4,13 @@
 $font-raleway : "Raleway", "Roboto", "Helvetica", Futura, sans-serif;
 $font-poppins : "Poppins", "Helvetica", Arial, sans-serif;
 
+$font-normal-text : $font-raleway;
+
 $def-padding 	  : 8px;
 $def-radius 	  : 2rem;
 $def-border-width : 1px;
+
+$def-icon-size : calc($def-padding * 4);
 
 $white	  : #fff !default;
 $gray-100 : #f8f9fa !default;
@@ -64,10 +68,11 @@ $disabled-color: #919398;
 	@include color($def-font-color);
 }
 
+
 @mixin font-normal {
 	@include def-font();
 
-	font-family: $font-raleway;
+	font-family: $font-normal-text;
 	font-size: 1em;
 	font-weight: 300;
 }
@@ -247,4 +252,13 @@ $disabled-color: #919398;
         border-color: $def-font-color;
     }
 
+}
+
+@mixin icon-size($size: $def-icon-size) {
+	.icon {
+        height: $size;
+        svg {
+            height: $size;
+        }
+    }
 }
