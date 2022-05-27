@@ -17,8 +17,6 @@ import IconMoney from '../../components/Icons/Money';
 export default function Home(){
 
     return (
-        /* TODO page overflow */
-
         <section className="page home">
             <h1>TESTE</h1>
 

@@ -5,22 +5,20 @@ import './index.scss';
 
 export interface FormFieldLabelProps {
     className?    : string,
-    text          : string,
     headingIcon?  : JSX.Element,
-    trailingIcon? : JSX.Element
+    trailingIcon? : JSX.Element,
+    children?     : any;
 }
 
-/* TODO test */
-
 export default function FormFieldLabel(props: FormFieldLabelProps) {
-    const { className, text, headingIcon, trailingIcon } = props ?? {};
+    const { className, children, headingIcon, trailingIcon } = props ?? {};
 
     return (        
         <label className={className}>
             <RenderIfTrue condition={!!headingIcon}>
                 {headingIcon}
             </RenderIfTrue>
-            {text}
+            {children}
             <RenderIfTrue condition={!!trailingIcon}>
                 {trailingIcon}
             </RenderIfTrue>

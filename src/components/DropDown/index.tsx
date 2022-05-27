@@ -16,6 +16,8 @@ export interface DropdownProps extends BaseFormFieldProps {
     children?   : DropDownItem | DropDownItem[] 
 }
 
+//TODO test and refactor
+
 const Dropdown: React.FC<DropdownProps> = ( props ) =>  {
     const { 
         children, 

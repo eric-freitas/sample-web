@@ -62,11 +62,10 @@ export default function FormField(props: FormFieldProps) {
 
     return (<>
                 <fieldset className={fieldsetClassName} onClick={onClick}>
-                    <FormFieldLabel
-                        text         = { label }
-                        trailingIcon = { <RenderIfTrue condition={!!required}><IconRequired/></RenderIfTrue> }
-                    />
-                        
+                    <FormFieldLabel trailingIcon = { <RenderIfTrue condition={!!required}><IconRequired/></RenderIfTrue> } >
+                        {label}
+                    </FormFieldLabel>
+
                     <div className={appendClassNames(fieldClassName, "form-field")}>
                         <span className='form-field__content form-field__content_initial'>
                             {leadingIcon}
