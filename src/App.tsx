@@ -22,7 +22,7 @@ export default function App() {
 				<section>
 					<ApiStatusLoading />
 					
-					<BrowserRouter basename='sample-web'>
+					<BrowserRouter basename={process.env.PUBLIC_URL}>
 						<Routes />
 					</BrowserRouter>
 
