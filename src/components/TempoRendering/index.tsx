@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import RenderIfTrue from '../RenderIfTrue';
 
 interface TempoRenderingProps {
-    time : number
+    time         : number
 }
 
 const TempoRendering: React.FC<TempoRenderingProps> = ({ children, ...props }) => {

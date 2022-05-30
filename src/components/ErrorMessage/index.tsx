@@ -2,6 +2,8 @@ import React from 'react';
 import { defaultsToTrue } from '../../static/utils';
 import ConditionalRendering from '../ConditionalRendering';
 import Footer from '../Footer';
+import ProgressBar from '../ProgressBar';
+import RenderIfTrue from '../RenderIfTrue';
 import TempoRendering from '../TempoRendering';
 
 import './index.scss';
@@ -24,7 +26,9 @@ export default function ErrorMessage(props: ErrorMsgProps) {
 
 	const element = (
 		<Footer className="error-msg">
-
+			<RenderIfTrue condition={autoHide}>
+				<ProgressBar time={time}/>
+			</RenderIfTrue>
 			<aside className="error-msg__icon">
 				{icon}
 			</aside>
@@ -46,9 +50,11 @@ export default function ErrorMessage(props: ErrorMsgProps) {
 		</TempoRendering>
 	)
 
-	return (<ConditionalRendering
-				condition = { !autoHide }
-				ifTrue	  = {element}
-				ifFalse	  = {tempoElement}
-		    />);
+	return (
+		<ConditionalRendering
+			condition = { !autoHide }
+			ifTrue	  = {element}
+			ifFalse	  = {tempoElement}
+		/>
+	);
 }

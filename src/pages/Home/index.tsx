@@ -13,6 +13,7 @@ import TextInput from '../../components/TextInput';
 import IconEdit from '../../components/Icons/Edit';
 import IconLoading from '../../components/Icons/Loading';
 import IconMoney from '../../components/Icons/Money';
+import ProgressBar from '../../components/ProgressBar';
 
 export default function Home(){
 
@@ -31,6 +32,8 @@ export default function Home(){
 
             <Panel closable title='Teste' icon={<IconBug />} >
                 TESTE
+
+                <ProgressBar time={10} />
 
                 <form>
                     <Dropdown id="chiste" label="Chiste">

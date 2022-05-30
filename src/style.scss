@@ -75,7 +75,7 @@ main {
   /* Firefox */
   * {
     scrollbar-width: auto;
-    scrollbar-color: $purple-lighter $def-level2-bg;
+    scrollbar-color: $blue $def-level2-bg;
   }
 
   /* Chrome, Edge, and Safari */
@@ -88,7 +88,7 @@ main {
   }
 
   *::-webkit-scrollbar-thumb {
-    background-color: $purple-lighter;
+    background-color: $blue;
     border-radius: $def-padding;
     border: 1px solid $def-level2-bg;
   }
