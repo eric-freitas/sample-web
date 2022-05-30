@@ -5,18 +5,20 @@ import FormField, { BaseFormFieldProps, FormFieldStatus } from '../FormField';
 
 import './index.scss';
 
-export interface TextInputProps extends BaseFormFieldProps {
-    id?   : string,
-    text? : string,
+export interface NumericInputProps extends BaseFormFieldProps {
+    id?    : string,
+    value? : number,
+    min?   : number,
+    max?   : number,
 
-    onChange?: (newText: string) => void;
+    onChange?: (newValue: number | null) => void;
 }
 
-const TextInput: React.FC<TextInputProps> = ( props ) =>  {
-    const { id, status, invalid, text, required, fieldClassName } = props ?? {};
+const NumericInput: React.FC<NumericInputProps> = ( props ) =>  {
+    const { id, status, invalid, value, required, fieldClassName, min, max } = props ?? {};
     const disabled = status === FormFieldStatus.Disabled;
 
-    const [ curValue , setCurValue  ] = useState<string>(text ?? "");
+    const [ curValue , setCurValue  ] = useState<number|null>(value ?? null);
     const [ changed  , setChanged   ] = useState<boolean>(false);
     const [ isInvalid, setIsInvalid ] = useState<boolean>(!!invalid);
 
@@ -29,15 +31,25 @@ const TextInput: React.FC<TextInputProps> = ( props ) =>  {
     const onChange = (e:React.ChangeEvent<HTMLInputElement>) => {
         setChanged(true);
         let { value } = e?.target ?? {};
-        value = value ?? "";
-        setCurValue(value);
-        props?.onChange?.call(this, value);
+        let numberVal: number|null = parseFloat(value);
+        if (Number.isNaN(numberVal)) {
+            numberVal = null;
+        }
+        setCurValue(numberVal);
+        props?.onChange?.call(this, numberVal);
     }
 
     useEffect(() => {
         setIsInvalid(invalid || !!(required && changed && !curValue));
     }, [ changed, curValue, required, invalid ])
 
+    let inputProps:any = {};
+    if (min) {
+        inputProps.min = min;
+    }
+    if (max) {
+        inputProps.max = max;
+    }
 
     return (
         <FormField 
@@ -46,11 +58,9 @@ const TextInput: React.FC<TextInputProps> = ( props ) =>  {
             onClick        = { onClick   }
             fieldClassName = { appendClassNames(fieldClassName, "input") }
         >
-            <input type="text" ref={inputElement} id={id} disabled={disabled} value={curValue} onChange={onChange}/>
+            <input {...inputProps} type="number" ref={inputElement} id={id} disabled={disabled} value={curValue ?? ""} onChange={onChange}/>
         </FormField>
     );
 };
   
-export default TextInput;
-
-
+export default NumericInput;

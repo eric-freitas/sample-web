@@ -3,7 +3,7 @@
 .progress-bar {
     display: block;
     width: 100%;
-    height: $def-padding;
+    height: calc($def-padding / 2);
     background-color: $blue;
     animation: progress-bar-animation;
     animation-duration: 10s;

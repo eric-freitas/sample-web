@@ -14,6 +14,7 @@ import IconEdit from '../../components/Icons/Edit';
 import IconLoading from '../../components/Icons/Loading';
 import IconMoney from '../../components/Icons/Money';
 import ProgressBar from '../../components/ProgressBar';
+import NumericInput from '../../components/NumericInput';
 
 export default function Home(){
 
@@ -95,6 +96,10 @@ export default function Home(){
                         suffix='Jest Suffix'
                         text='Error Text'
                         trailingIcon={<IconMoney/>}
+                    />
+
+                    <NumericInput
+                        label="Número"
                     />
                 </form>
             </Panel>
