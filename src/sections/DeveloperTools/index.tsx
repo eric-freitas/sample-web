@@ -1,6 +1,6 @@
 import React, { useState }  from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import allActions from '../../actions';
 import Button from '../../components/Button';
 import { CheatCodeRevealingProps } from '../../components/CheatCodeRevealing';
@@ -11,18 +11,18 @@ import NumericInput from '../../components/NumericInput';
 import Panel, { PanelType } from '../../components/Panel';
 import TextInput from '../../components/TextInput';
 import { ApiExecStatus } from '../../models/ApiExec';
-import LoadingPage from '../../pages/Loading';
 import { SpecialKey } from '../../static/sniffKey';
 
 import './index.scss';
 
 export interface DeveloperToolsProps {
     onRenderPage? : (page? : JSX.Element) => void;
+    loadingPage   : JSX.Element
 }
 
 function DeveloperTools(props: DeveloperToolsProps) {
 
-    const { onRenderPage } = props;
+    const { onRenderPage, loadingPage } = props;
 
 	const { t } = useTranslation();
     const dispatch = useDispatch();
@@ -68,11 +68,10 @@ function DeveloperTools(props: DeveloperToolsProps) {
 
         const showLoadingPage = () => {
             const toShow = !show;
-
             setShow(toShow);
 
             if(toShow) {
-                onRenderPage?.call(null, <LoadingPage/>)
+                onRenderPage?.call(null, loadingPage)
             } else {
                 onRenderPage?.call(null);
             }

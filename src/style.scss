@@ -80,7 +80,7 @@ main {
 
   /* Chrome, Edge, and Safari */
   *::-webkit-scrollbar {
-    width: calc($def-padding * 2);
+    width: calc($def-padding);
   }
 
   *::-webkit-scrollbar-track {

@@ -1,6 +1,7 @@
 {
     "main": {
-        "name": "Exemplo"
+        "name": "Exemplo",
+        "loading": "Carregando..."
     },
     "errors":{
         "title" :{

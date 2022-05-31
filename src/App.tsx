@@ -1,11 +1,7 @@
 import React, { Suspense, useEffect, useState } from 'react';
-
 import { BrowserRouter } from 'react-router-dom';
 import ApiErrorMsg from './components/ApiErrorMsg';
 import ApiStatusLoading from './components/ApiStatus';
-import LoadingPage from './pages/Loading';
-
-import Routes from './routes';
 import DeveloperTools from './sections/DeveloperTools';
 
 /*	const currentUser = useSelector((state:AppState) => state.currentUser);
@@ -17,27 +13,28 @@ import DeveloperTools from './sections/DeveloperTools';
 
 type SetPageToRenderCallback = (page?: JSX.Element) => void;
 
-const defaultRouter = (
+const defaultRouter = (routes: JSX.Element) => (
 	<BrowserRouter basename={process.env.PUBLIC_URL}>
-		<Routes />
+		{routes}
 	</BrowserRouter>
 )
 
 interface InitialSectionProps {
 	onRef? : (callback: SetPageToRenderCallback) => void;
+	routes : JSX.Element
 }
 
 function InitialSection(props: InitialSectionProps) {
 
-	const { onRef } = props;
+	const { onRef, routes } = props;
 	
-	const [ pageToRender, setPageToRender ] = useState<JSX.Element>(defaultRouter);
+	const [ pageToRender, setPageToRender ] = useState<JSX.Element>(defaultRouter(routes));
 
 	useEffect(() => {
 		onRef?.call(null, (newPage? : JSX.Element) => {
-			setPageToRender(newPage ?? defaultRouter);
+			setPageToRender(newPage ?? defaultRouter(routes));
 		});
-	}, [ onRef ]);
+	}, [ onRef, routes ]);
 
 	return (
 		<section>
@@ -48,7 +45,14 @@ function InitialSection(props: InitialSectionProps) {
 	)
 }
 
-export default function App() {
+export interface AppProps {
+	routes 		: JSX.Element,
+	loadingPage : JSX.Element
+}
+
+export default function App(props: AppProps) {
+
+	const { routes, loadingPage } = props;
 
 	let onChangePage : SetPageToRenderCallback;
 
@@ -61,10 +65,10 @@ export default function App() {
 	};
 
 	return (
-    	<Suspense fallback={<LoadingPage />}>
+    	<Suspense fallback={loadingPage}>
       		<main className="App">
-				<InitialSection onRef={onRef}/>
-				<DeveloperTools onRenderPage={onRenderPage}/>
+				<InitialSection onRef={onRef} routes={routes}/>
+				<DeveloperTools onRenderPage={onRenderPage} loadingPage={loadingPage}/>
 			</main>
     	</Suspense>
   	);
