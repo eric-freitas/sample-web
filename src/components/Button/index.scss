@@ -14,6 +14,7 @@ $button-border: $def-border-width;
 
     display: inline-flex;
     padding: calc($def-padding / 2) $def-padding;
+    align-items: center;
 
     &.borderless {
         @include borderless-click-effect();

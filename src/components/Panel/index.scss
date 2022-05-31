@@ -7,6 +7,8 @@
     margin: $def-padding 0;
 
     &.box {
+        background-color: $def-level2-bg;
+
         header {
             border-bottom: none;
             h2 {
@@ -15,7 +17,6 @@
         }
 
         .panel__content {
-            background-color: initial;
             display: contents;
         }
     }

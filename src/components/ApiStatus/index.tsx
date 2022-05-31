@@ -12,8 +12,8 @@ export default function ApiStatusLoading () {
             ?.find(e => 
                     e.status === ApiExecStatus.Init || e.status === ApiExecStatus.Loading
             );
-    
+
     return <RenderIfTrue condition={!!apiStatus}>
-                (<IconLoading className="api-status"/>)
+                <IconLoading className="api-status"/>
             </RenderIfTrue>;
 }

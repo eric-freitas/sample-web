@@ -9,9 +9,9 @@ i18n
 		backend: {
 			loadPath: `${process.env.PUBLIC_URL}/locales/{{lng}}/{{ns}}.json`
 		},
-		fallbackLng: 'es',
+		fallbackLng: 'en',
 		debug: false,
-		lng: "es",
+		lng: "pt-BR",
 		react: {
 			useSuspense: false
 		},

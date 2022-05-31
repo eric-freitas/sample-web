@@ -20,11 +20,12 @@ interface PanelProps {
     onClose?    : SimpleCallback,
     cheatCoded? : CheatCodeRevealingProps,
     className?  : string,
-    type?       : PanelType
+    type?       : PanelType,
+    visible?    : boolean
 }
 
 const Panel: React.FC<PanelProps> = ({ children, ...props }) =>  {
-    const { title, icon, closable, className, cheatCoded, onClose, type } = props;
+    const { title, icon, closable, className, cheatCoded, onClose, type, visible } = props;
     const [ show, setShow ] = useState<boolean>(true);
 
     const onClick = () => {
@@ -33,7 +34,7 @@ const Panel: React.FC<PanelProps> = ({ children, ...props }) =>  {
     }
 
     useEffect(() => {
-        if (cheatCoded) {
+        if (cheatCoded && !visible) {
             setShow(false);
 
             const { sequence, specialKeys } = cheatCoded;
@@ -43,7 +44,7 @@ const Panel: React.FC<PanelProps> = ({ children, ...props }) =>  {
                 onActivate: () => setShow(true)
             })
         }
-    }, [ cheatCoded ]);
+    }, [ cheatCoded, visible ]);
 
     return (
         <RenderIfTrue condition={show}>

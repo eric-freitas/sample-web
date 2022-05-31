@@ -1,8 +1,12 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import { BrowserRouter } from 'react-router-dom';
 import ApiErrorMsg from './components/ApiErrorMsg';
 import ApiStatusLoading from './components/ApiStatus';
+import ConditionalRendering from './components/ConditionalRendering';
+import RenderIfTrue from './components/RenderIfTrue';
+import AppState from './models/AppState';
 import LoadingPage from './pages/Loading';
 
 import Routes from './routes';
@@ -13,22 +17,59 @@ import DeveloperTools from './sections/DeveloperTools';
 		
 
 	}, [ currentUser ])
-*/
+	*/
+
+type SetPageToRenderCallback = (page?: JSX.Element) => void;
+
+const defaultRouter = (
+	<BrowserRouter basename={process.env.PUBLIC_URL}>
+		<Routes />
+	</BrowserRouter>
+)
+
+interface InitialSectionProps {
+	onRef? : (callback: SetPageToRenderCallback) => void;
+}
+
+function InitialSection(props: InitialSectionProps) {
+
+	const { onRef } = props;
+
+	useEffect(() => {
+		onRef?.call(null, (newPage? : JSX.Element) => {
+			setPageToRender(newPage ?? defaultRouter);
+		});
+	}, [ onRef ]);
+
+
+	const [ pageToRender, setPageToRender ] = useState<JSX.Element>(defaultRouter);
+
+	return (
+		<section>
+			<ApiStatusLoading />
+			{pageToRender}
+			<ApiErrorMsg />
+		</section>
+	)
+}
 
 export default function App() {
+
+	let onChangePage : SetPageToRenderCallback;
+
+	const onRef = (c: SetPageToRenderCallback) => {
+		onChangePage = c;
+	}
+
+	const onRenderPage = (newPage? : JSX.Element) => {
+		onChangePage?.call(null, newPage);
+	};
+
 	return (
     	<Suspense fallback={<LoadingPage />}>
       		<main className="App">
-				<section>
-					<ApiStatusLoading />
-					
-					<BrowserRouter basename={process.env.PUBLIC_URL}>
-						<Routes />
-					</BrowserRouter>
-
-					<ApiErrorMsg />
-				</section>
-				<DeveloperTools/>
+				<InitialSection onRef={onRef}/>
+				<DeveloperTools onRenderPage={onRenderPage}/>
 			</main>
     	</Suspense>
   	);

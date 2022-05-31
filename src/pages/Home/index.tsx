@@ -99,7 +99,7 @@ export default function Home(){
                     />
 
                     <NumericInput
-                        label="Número"
+                        label=""
                     />
                 </form>
             </Panel>

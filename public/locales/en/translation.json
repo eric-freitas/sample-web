@@ -27,7 +27,12 @@
         "trigger-error": {
             "title" : "Trigger Error Message",
             "type": "Type",
+            "msg": "Message",
             "button" : "Show"
+        },
+        "show-load-page": {
+            "title": "Show Loading Page",
+            "show": "Show"
         }
     }
 }

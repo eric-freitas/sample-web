@@ -27,7 +27,12 @@
         "trigger-error": {
             "title" : "Disparar Mensagem de Erro",
             "type": "Tipo",
+            "msg": "Mensagem",
             "button" : "Exibir"
+        },
+        "show-load-page": {
+            "title": "Exibir Ecrã de Carregamento",
+            "show": "Exibir"
         }
     }
 }

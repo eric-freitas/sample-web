@@ -1,28 +1,28 @@
 import { ApiExecDataStore } from "../models/ApiExec";
 
-export const SET_ERROR  = "SET_ERROR";
-export const SET_STATUS = "SET_STATUS";
+export const SET_API_ERROR  = "SET_API_ERROR";
+export const SET_API_STATUS = "SET_API_STATUS";
 
-interface SetErrorAction {
-    type    : typeof SET_ERROR
+interface SetApiErrorAction {
+    type    : typeof SET_API_ERROR
     payload : any
 }
 
-interface SetStatusAction {
-    type    : typeof SET_STATUS
+interface SetApiStatusAction {
+    type    : typeof SET_API_STATUS
     payload : ApiExecDataStore
 }
 
-const setStatus = (data:ApiExecDataStore):SetStatusAction => {
+const setApiStatus = (data:ApiExecDataStore):SetApiStatusAction => {
     return {
-        type    : SET_STATUS,
+        type    : SET_API_STATUS,
         payload : data
     }
 }
  
 // eslint-disable-next-line
 export default {
-    setStatus
+    setApiStatus
 }
 
-export type ApiExecActionTypes = SetErrorAction | SetStatusAction
+export type ApiExecActionTypes = SetApiErrorAction | SetApiStatusAction

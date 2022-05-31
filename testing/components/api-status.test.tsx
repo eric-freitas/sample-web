@@ -35,7 +35,7 @@ describe("Api Status Component test", () => {
             const store = configureStore({ reducer : rootReducer });
             store
                 .dispatch(
-                    allActions.apiExec.setStatus(
+                    allActions.apiExec.setApiStatus(
                         {
                             api		: "jest-test",
                             status 	: ApiExecStatus.Loading

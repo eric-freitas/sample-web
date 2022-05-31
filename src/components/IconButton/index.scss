@@ -1,1 +1,9 @@
 @import '../../shared.scss';
+
+.button {
+    @include icon-size(calc($def-padding * 3));
+
+    .icon:not(:last-child) {
+        margin-right: $def-padding;
+    }
+}

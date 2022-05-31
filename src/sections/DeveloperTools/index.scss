@@ -1,6 +1,5 @@
 @import '../../shared.scss';
 
-
 .dev-tools {
     z-index : 1001;
     height: 100%;
@@ -17,23 +16,31 @@
         }
     }
 
+    .button-field {
+        margin: calc($def-padding / 2) 0;
+    }
+
     .dev-tools__trigger-error {
         background-color: $orange;
 
         $dt__te__dropdown--bg: lighten($orange, 10%);
 
-        .dropdown {
+        fieldset {
             --fieldset-bg : #{$dt__te__dropdown--bg};
             --fieldset-border: #{$def-font-color};
             --fieldset-color: #{$gray-100};
         }
+        .button {
+            padding-left: calc($def-padding * 2);
+            padding-right: calc($def-padding * 2);
+        }
     }
 
-    .button {
-        padding-left: calc($def-padding * 2);
-        padding-right: calc($def-padding * 2);
+    .dev-tools__show-load-page {
+        background-color: $blue;
+        .button {
+            @include icon-size($def-icon-size);
+        }
     }
-
-
     
 }
