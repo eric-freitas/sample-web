@@ -1,12 +1,8 @@
 import React, { Suspense, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 
 import { BrowserRouter } from 'react-router-dom';
 import ApiErrorMsg from './components/ApiErrorMsg';
 import ApiStatusLoading from './components/ApiStatus';
-import ConditionalRendering from './components/ConditionalRendering';
-import RenderIfTrue from './components/RenderIfTrue';
-import AppState from './models/AppState';
 import LoadingPage from './pages/Loading';
 
 import Routes from './routes';
@@ -34,15 +30,14 @@ interface InitialSectionProps {
 function InitialSection(props: InitialSectionProps) {
 
 	const { onRef } = props;
+	
+	const [ pageToRender, setPageToRender ] = useState<JSX.Element>(defaultRouter);
 
 	useEffect(() => {
 		onRef?.call(null, (newPage? : JSX.Element) => {
 			setPageToRender(newPage ?? defaultRouter);
 		});
 	}, [ onRef ]);
-
-
-	const [ pageToRender, setPageToRender ] = useState<JSX.Element>(defaultRouter);
 
 	return (
 		<section>
