@@ -100,7 +100,7 @@ describe("Error Msg Component test", () => {
         let container = document.createElement('div');
         document.body.appendChild(container);
         await act(async() => {
-            ReactDOM.render(<ErrorMessage time={2000} title={jestErrorTitle} message={jestErrorMessage}  />, container);
+            ReactDOM.render(<ErrorMessage time={2} title={jestErrorTitle} message={jestErrorMessage}  />, container);
 
             let element = container.querySelector(".error-msg");
             expect(element).not.toBeNull();

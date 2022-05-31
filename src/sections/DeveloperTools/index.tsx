@@ -1,4 +1,4 @@
-import React, { useEffect, useState }  from 'react';
+import React, { useState }  from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import allActions from '../../actions';
@@ -32,17 +32,8 @@ function DeveloperTools(props: DeveloperToolsProps) {
         const [ errorType, setErrorType ] = useState<number>(500);
         const [ errorMsg , setErrorMsg  ] = useState<string>("");
 
-        const [ showErrorMsg, setShowErrorMsg ] = useState<any>(null);
-
-        useEffect(() => {
-            if (showErrorMsg) {
-                dispatch(allActions.apiExec.setApiStatus(showErrorMsg));
-            }
-            setShowErrorMsg(null);
-        }, [showErrorMsg])
-
-        const triggerErrorMsg = () => {
-            setShowErrorMsg({
+        const triggerErrorMsg = async() => {
+            dispatch(allActions.apiExec.setApiStatus({
                 api : "dev-tools",
                 status: ApiExecStatus.Error,
                 error : {
@@ -53,7 +44,13 @@ function DeveloperTools(props: DeveloperToolsProps) {
                         }   
                     }
                 }
-            });
+            }));
+            setTimeout(()=> {
+                dispatch(allActions.apiExec.setApiStatus({
+                    api : "dev-tools",
+                    status: ApiExecStatus.Ok
+                }));
+            }, 10200)
         }
         
         return  (

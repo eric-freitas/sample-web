@@ -24,7 +24,7 @@ interface InitialSectionProps {
 	routes : JSX.Element
 }
 
-function InitialSection(props: InitialSectionProps) {
+function MainPage(props: InitialSectionProps) {
 
 	const { onRef, routes } = props;
 	
@@ -36,13 +36,7 @@ function InitialSection(props: InitialSectionProps) {
 		});
 	}, [ onRef, routes ]);
 
-	return (
-		<section>
-			<ApiStatusLoading />
-			{pageToRender}
-			<ApiErrorMsg />
-		</section>
-	)
+	return pageToRender;
 }
 
 export interface AppProps {
@@ -67,7 +61,11 @@ export default function App(props: AppProps) {
 	return (
     	<Suspense fallback={loadingPage}>
       		<main className="App">
-				<InitialSection onRef={onRef} routes={routes}/>
+			  <section>
+					<ApiStatusLoading />
+					<MainPage onRef={onRef} routes={routes}/>
+					<ApiErrorMsg />
+				</section>
 				<DeveloperTools onRenderPage={onRenderPage} loadingPage={loadingPage}/>
 			</main>
     	</Suspense>

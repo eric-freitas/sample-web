@@ -13,6 +13,12 @@ interface ErrorMsgProps {
     message 	: string,
     icon?   	: JSX.Element,
 	autoHide?	: boolean,
+	/**
+	 * Time, in seconds, to hide the Error Message
+	 *
+	 * @type {number}
+	 * @memberof ErrorMsgProps
+	 */
 	time?		: number
 }
 
@@ -22,7 +28,7 @@ export default function ErrorMessage(props: ErrorMsgProps) {
 
 	let { autoHide, time } = props || {};
 	autoHide = defaultsToTrue(autoHide);
-	time     = time || 10000;
+	time     = time || 10;
 
 	const element = (
 		<Footer className="error-msg">
@@ -45,7 +51,7 @@ export default function ErrorMessage(props: ErrorMsgProps) {
 	);
 
 	const tempoElement = (
-		<TempoRendering time={time}>
+		<TempoRendering time={time * 1000}>
 			{element}
 		</TempoRendering>
 	)
