@@ -3,8 +3,9 @@ import { useSelector } from 'react-redux';
 import AppState from '../../models/AppState';
 import IconLoading from '../Icons/Loading';
 import { ApiExecStatus } from "../../models/ApiExec";
-import './index.scss';
 import RenderIfTrue from '../RenderIfTrue';
+
+import './index.scss';
 
 export default function ApiStatusLoading () {
     const apiStatus = 

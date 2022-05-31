@@ -4,7 +4,6 @@ import CheatCodeRevealing from '../../src/components/CheatCodeRevealing';
 import { act } from 'react-dom/test-utils';
 import * as ReactDOM from "react-dom";
 import { SpecialKey } from '../../src/static/sniffKey';
-import { sleep } from '../../src/static/utils';
 
 const toRender = (<div className='render-if-cheat'>TRUE</div>);
 

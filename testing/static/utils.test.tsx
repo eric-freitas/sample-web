@@ -1,7 +1,7 @@
 import 'jest-extended/all';
 import ReactDOM from 'react-dom';
 import { act } from 'react-dom/test-utils';
-import { defaultsToTrue, wrapText, joinClassNames, sleep, appendClassNames } from '../../src/static/utils';
+import { defaultsToTrue, wrapText, joinClassNames, sleep, appendClassNames, camelCaseToWords } from '../../src/static/utils';
 
 describe("Utils Lib test",  () => {
 
@@ -11,8 +11,7 @@ describe("Utils Lib test",  () => {
         await sleep(2000);
         const elapsed = ((Date.now()) - before);
 
-        const condition = elapsed >= 1995 && elapsed <= 2010;
-        console.log(elapsed);
+        const condition = elapsed >= 1995 && elapsed <= 2050;
         expect(condition).toBe(true);
         
     });
@@ -65,4 +64,14 @@ describe("Utils Lib test",  () => {
         expect(wrapText(undefined, "span")).toBeNull();
         expect(wrapText("   ", "span")).toBeNull();
     })
+
+    it ("should convert camel case to words", () => {
+        expect(camelCaseToWords("")).toBe("");
+        expect(camelCaseToWords(null)).toBe("");
+        expect(camelCaseToWords(undefined)).toBe("");
+        expect(camelCaseToWords(" ")).toBe(" ");
+        expect(camelCaseToWords("this")).toBe("This");
+        expect(camelCaseToWords("thisThat")).toBe("This That");
+        expect(camelCaseToWords("thisIsThat")).toBe("This Is That");
+    });
 })

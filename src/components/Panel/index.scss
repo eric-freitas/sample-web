@@ -39,7 +39,7 @@
         .panel__title {
             display: flex;
             align-items: center;
-            column-gap: calc($def-padding / 2);
+            @include gap(calc($def-padding / 2));
             & > * {
                 margin: 0;
             }

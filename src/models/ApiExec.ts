@@ -5,7 +5,6 @@ export interface ApiExecDataStore {
     api    : string
 }
 
-//TODO add functions to handle data store
 export enum ApiExecStatus {
     Idle    = 0,
     Init    = 1,

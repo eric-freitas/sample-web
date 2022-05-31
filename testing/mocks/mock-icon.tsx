@@ -1,5 +1,5 @@
 import React from 'react';
-import BaseIcon from '../../src/components/Icons/BaseIcon';
+import BaseIcon from '../../src/components/Icons/Icon/BaseIcon';
 
 export default class IconMock extends BaseIcon {
     width     = 246;

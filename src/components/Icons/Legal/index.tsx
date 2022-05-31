@@ -1,5 +1,5 @@
 import React from 'react';
-import BaseIcon from '../BaseIcon';
+import BaseIcon from '../Icon/BaseIcon';
 
 export default class IconLegal extends BaseIcon {
     width     = 246;

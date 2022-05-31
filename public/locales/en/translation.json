@@ -34,6 +34,13 @@
         "show-load-page": {
             "title": "Show Loading Page",
             "show": "Show"
+        },
+        "show-api-state": {
+            "title": "Show API Loading Icon"
+        },
+        "display-icons": {
+            "title": "Icon Library",
+            "slash": "Slash Icons"
         }
     }
 }

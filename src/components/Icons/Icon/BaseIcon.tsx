@@ -1,7 +1,7 @@
 import React from "react";
 import Icon from ".";
-import { appendClassNames } from "../../static/utils";
-import SlashIcon from "./Sections/Slash";
+import { appendClassNames } from "../../../static/utils";
+import SlashIcon from "../Sections/Slash";
 
 export interface BaseIconProps {
     slashed?        : boolean,

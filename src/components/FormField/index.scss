@@ -83,7 +83,7 @@ form {
                 flex-direction: row;
                 align-items: center;
                 flex-wrap: nowrap;
-                column-gap: $def-padding;
+                @include gap();
                 &.form-field__content_initial {
                     width: 100%;
                 }

@@ -3,11 +3,21 @@
 ## Todo
 
 - [ ] user data model
-- [ ] error message handling
-- [ ] fonts
 
 ## In progress
 
-- [ ] starting...
+- [ ] revise icons:
+  - [ ] chevron ???
+  - [ ] close
+  - [ ] edit
+  - [ ] key
+  - [ ] money
+  - [ ] required
+  - [ ] server
+- [ ] dev tools
+  - [ ] options to icons:
+    - [x] slash
+    - [ ] rotate
+    - [ ] color
 
 ## Done ✓

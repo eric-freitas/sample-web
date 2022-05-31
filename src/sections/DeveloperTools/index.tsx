@@ -12,8 +12,12 @@ import Panel, { PanelType } from '../../components/Panel';
 import TextInput from '../../components/TextInput';
 import { ApiExecStatus } from '../../models/ApiExec';
 import { SpecialKey } from '../../static/sniffKey';
+import Icons from '../../components/Icons';
+import Emojis from '../../components/Icons/Emojis';
 
 import './index.scss';
+import { camelCaseToWords, renderIcons } from '../../static/utils';
+import IconSlash from '../../components/Icons/Slash';
 
 export interface DeveloperToolsProps {
     onRenderPage? : (page? : JSX.Element) => void;
@@ -99,14 +103,60 @@ function DeveloperTools(props: DeveloperToolsProps) {
         const showApiState = () => {
             const toShow = !show;
             setShow(toShow);
+            if (toShow) {
+                dispatch(allActions.apiExec.setApiStatus({
+                    api : "api-loading-state",
+                    status: ApiExecStatus.Init
+                }));
+            } else {
+                dispatch(allActions.apiExec.setApiStatus({
+                    api : "api-loading-state",
+                    status: ApiExecStatus.Ok
+                }));
+            }
         }
 
         return  (
             <Panel className='dev-tools__show-api-state' type={PanelType.Box} title={t("dev-tools.show-api-state.title")}>
-            <div className='align-center button-field'>
-                <IconButton icon={<IconShow slashed={show}/>} onClick={showApiState} />
-            </div>
-        </Panel>
+                <div className='align-center button-field'>
+                    <IconButton icon={<IconShow slashed={show}/>} onClick={showApiState} />
+                </div>
+            </Panel>
+        )
+    }
+
+    function DisplayIcons() {
+        const [ slashed, setSlashed ] = useState<boolean>(false);
+
+        interface DisplayIconProps {
+            name     : string,
+            children : JSX.Element
+        }
+
+        function DisplayIcon(props: DisplayIconProps) {
+            const { name, children: icon } = props;
+            return ( 
+                <li className='display-icon'>
+                    <span className='icon-name'>{name}</span>
+                    {icon}
+                </li>
+            )
+        }
+
+        const renderIcon = (name: string, icon: JSX.Element) => {
+            return <DisplayIcon key={name} name={camelCaseToWords(name)}>{icon}</DisplayIcon>
+        }
+
+        return  (
+            <Panel className='dev-tools__display-icons' type={PanelType.Box} title={t("dev-tools.display-icons.title")}>
+                <nav>
+                    <IconButton borderless hint={t("dev-tools.display-icons.slash")} icon={<IconSlash/>} className={slashed ? "activated" : ""} onClick={() => setSlashed(!slashed)}/>
+                </nav>
+                <ul>
+                    {renderIcons(Icons,  { slashed }, renderIcon)}
+                    {renderIcons(Emojis, { slashed }, renderIcon)}
+                </ul>
+            </Panel>
         )
     }
 
@@ -120,6 +170,7 @@ function DeveloperTools(props: DeveloperToolsProps) {
             <TriggerErrorMessage/>
             <ShowLoadingPage />
             <ShowApiLoadingState/>
+            <DisplayIcons/>
         </Panel>
     )
 }

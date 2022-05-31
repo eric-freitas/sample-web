@@ -1,5 +1,5 @@
 import React               from 'react';
-import { SimpleCallback } from '../../static/utils';
+import { appendClassNames, SimpleCallback } from '../../static/utils';
 import { FormFieldStatus } from '../FormField';
 
 import './index.scss';
@@ -22,13 +22,19 @@ export interface ButtonProps {
     text?         : any,
     status?       : FormFieldStatus,
     onClick?      : SimpleCallback,
-    submitAction? : SubmitAction
+    submitAction? : SubmitAction,
+    hint?         : string,
+    borderless?   : boolean
 }
 
 export default function Button (props: ButtonProps){
     
-    const { name, id, className, text, status, submitAction, onClick } = props ?? {};
-    const classToApply  = `button ${className ?? ""}`.trim();
+    const { name, id, className, text, status, submitAction, hint, borderless, onClick } = props ?? {};
+    const classToApply  = appendClassNames(
+                            `button ${className ?? ""}`.trim(), 
+                            (borderless ? "borderless" : "")
+                        );
+    
     const disabled      = (status === FormFieldStatus.Disabled) || undefined;
 
     let submitArgs: React.ButtonHTMLAttributes<HTMLButtonElement> = {
@@ -54,6 +60,7 @@ export default function Button (props: ButtonProps){
                 className   = { classToApply      }
                 disabled    = { disabled          }  
                 onClick     = { onClick           }
+                title       = { hint              }
                 { ...submitArgs }
             >
                 {text}

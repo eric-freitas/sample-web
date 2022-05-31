@@ -114,6 +114,12 @@ $disabled-color: #919398;
 	color: $def-font-color;
 }
 
+@mixin gap($width: $def-padding) {
+	column-gap: $width;
+	grid-column-gap: $width;
+	grid-gap: $width;
+}
+
 @mixin vertical-split {
 	display: flex;
 	flex-wrap: nowrap;
@@ -121,7 +127,7 @@ $disabled-color: #919398;
 	justify-content: space-between;
 	align-items: flex-start;
 	flex-direction: row;
-	column-gap: $def-padding;
+	@include gap();
 }
 
 @mixin size ($width, $height : 0, $line-height : 0) {

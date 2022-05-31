@@ -5,6 +5,7 @@
     height: 100%;
     box-sizing: border-box;
     margin: 0;
+    max-width: 33.33%;
     
     & > section {
 
@@ -40,6 +41,49 @@
         background-color: $blue;
         .button {
             @include icon-size($def-icon-size);
+        }
+    }
+
+    .dev-tools__display-icons {
+        nav {
+            .button.activated {
+                background-color: $def-font-color;
+                fill : $def-panel-bg;
+            }
+        }
+
+        ul {
+            list-style-type: none;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            align-content: flex-start;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: $def-padding calc($def-padding * 2);
+            margin: 0;
+            @include gap($def-padding);
+
+            li {
+                @include round-corner-box();
+                border-width: 0;
+                background-color: $def-panel-bg;
+                padding: $def-padding;
+
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: column;
+                align-content: center;
+                align-items: center;
+                flex-basis: 20%;
+                flex-grow: 1;
+                max-width: calc($def-padding * 16);
+                min-width: calc($def-padding * 8);
+
+                @include gap(calc($def-padding / 2));
+
+                text-align: center;
+            }
         }
     }
     

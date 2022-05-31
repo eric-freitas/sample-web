@@ -1,5 +1,5 @@
 import React from 'react';
-import BaseIcon from '../BaseIcon';
+import BaseIcon from '../Icon/BaseIcon';
 import SearchIconSection from '../Sections/Search';
 
 export default class IconNotFound extends BaseIcon {

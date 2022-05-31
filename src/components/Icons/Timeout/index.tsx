@@ -1,5 +1,5 @@
 import React from 'react';
-import BaseIcon from '../BaseIcon';
+import BaseIcon from '../Icon/BaseIcon';
 import ClockIconSection from '../Sections/Clock';
 
 export default class IconTimeout extends BaseIcon {

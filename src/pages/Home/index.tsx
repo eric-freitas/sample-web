@@ -27,7 +27,7 @@ export default function Home(){
 
                 <Button text="teste" />
 
-                <Button className='borderless' text="X" />
+                <Button borderless text="X" />
 
             </div>
 

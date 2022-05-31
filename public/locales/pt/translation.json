@@ -34,6 +34,13 @@
         "show-load-page": {
             "title": "Exibir Ecrã de Carregamento",
             "show": "Exibir"
+        },
+        "show-api-state": {
+            "title": "Exibir Ícone de Espera de API"
+        },
+        "display-icons": {
+            "title": "Biblioteca de Ícones",
+            "slash": "Colocar uma barra nos ícones"
         }
     }
 }

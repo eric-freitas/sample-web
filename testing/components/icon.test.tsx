@@ -2,7 +2,7 @@ import 'jest-extended';
 import React from 'react';
 import {act} from 'react-dom/test-utils';
 import * as ReactDOM from "react-dom";
-import Icon from '../../src/components/Icons';
+import Icon from '../../src/components/Icons/Icon';
  
 import { fireEvent } from '@testing-library/react';
 
