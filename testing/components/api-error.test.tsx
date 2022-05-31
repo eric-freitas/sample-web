@@ -38,7 +38,7 @@ describe("Api Error Msg Component test", () => {
             const store = configureStore({ reducer : rootReducer });
             ReactDOM.render(<redux.Provider store={store}><ApiErrorMsg/></redux.Provider> , container);
             store
-                .dispatch(allActions.apiExec.setStatus(
+                .dispatch(allActions.apiExec.setApiStatus(
                 {
                     api		: "api-jest",
                     status 	: ApiExecStatus.Error,
@@ -76,7 +76,7 @@ describe("Api Error Msg Component test", () => {
             await sleep(2000);
             
             store
-                .dispatch(allActions.apiExec.setStatus(
+                .dispatch(allActions.apiExec.setApiStatus(
                 {
                     api		: "api-jest",
                     status 	: ApiExecStatus.Error,

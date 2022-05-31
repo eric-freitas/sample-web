@@ -70,6 +70,18 @@ main {
     transform: scale(1,-1);
 }
 
+.rotate180 {
+    transform: rotate(180deg);
+}
+
+.rotate90 {
+    transform: rotate(90deg);
+}
+
+.rotate270 {
+    transform: rotate(270deg);
+}
+
 
 /* ===== Scrollbar CSS ===== */
   /* Firefox */

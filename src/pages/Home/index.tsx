@@ -34,7 +34,7 @@ export default function Home(){
             <Panel closable title='Teste' icon={<IconBug />} >
                 TESTE
 
-                <ProgressBar time={10} />
+                <ProgressBar time={100} />
 
                 <form>
                     <Dropdown id="chiste" label="Chiste">
@@ -99,7 +99,7 @@ export default function Home(){
                     />
 
                     <NumericInput
-                        label=""
+                        label="Numérico"
                     />
                 </form>
             </Panel>

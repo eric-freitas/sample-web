@@ -7,7 +7,11 @@ export interface ProgressBarProps {
     time: number
 }
 
+//TODO TEST
+
 export default function ProgressBar(props: ProgressBarProps) {
+
+    const { time } = props ?? {};
 
     const [ show, setShow ] = useState<boolean>(true);
     const pBar = useRef<HTMLSpanElement>(null);
@@ -18,7 +22,7 @@ export default function ProgressBar(props: ProgressBarProps) {
 
     return (
         <RenderIfTrue condition={show}>
-            <span ref={pBar} className='progress-bar'></span>
+            <span role="progressbar" ref={pBar} className='progress-bar' style={{animationDuration : `${time || 10}s`}}></span>
         </RenderIfTrue>
     )
 }

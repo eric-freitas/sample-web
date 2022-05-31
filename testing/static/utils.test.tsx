@@ -11,7 +11,8 @@ describe("Utils Lib test",  () => {
         await sleep(2000);
         const elapsed = ((Date.now()) - before);
 
-        const condition = elapsed >= 1995 && elapsed <= 2005;
+        const condition = elapsed >= 1995 && elapsed <= 2010;
+        console.log(elapsed);
         expect(condition).toBe(true);
         
     });

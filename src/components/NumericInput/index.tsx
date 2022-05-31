@@ -60,7 +60,7 @@ const NumericInput: React.FC<NumericInputProps> = ( props ) =>  {
             onClick        = { onClick   }
             fieldClassName = { appendClassNames(fieldClassName, "input") }
         >
-            <input {...inputProps} type="number" ref={inputElement} id={id} disabled={disabled} value={curValue ?? ""} onChange={onChange}/>
+            <input {...inputProps} type="number" inputMode="decimal" ref={inputElement} id={id} disabled={disabled} value={curValue ?? ""} onChange={onChange}/>
         </FormField>
     );
 };

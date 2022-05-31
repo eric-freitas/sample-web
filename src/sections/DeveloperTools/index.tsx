@@ -1,4 +1,4 @@
-import React, { useState }  from 'react';
+import React, { useEffect, useState }  from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import allActions from '../../actions';
@@ -32,8 +32,17 @@ function DeveloperTools(props: DeveloperToolsProps) {
         const [ errorType, setErrorType ] = useState<number>(500);
         const [ errorMsg , setErrorMsg  ] = useState<string>("");
 
+        const [ showErrorMsg, setShowErrorMsg ] = useState<any>(null);
+
+        useEffect(() => {
+            if (showErrorMsg) {
+                dispatch(allActions.apiExec.setApiStatus(showErrorMsg));
+            }
+            setShowErrorMsg(null);
+        }, [showErrorMsg])
+
         const triggerErrorMsg = () => {
-            dispatch(allActions.apiExec.setApiStatus({
+            setShowErrorMsg({
                 api : "dev-tools",
                 status: ApiExecStatus.Error,
                 error : {
@@ -44,7 +53,7 @@ function DeveloperTools(props: DeveloperToolsProps) {
                         }   
                     }
                 }
-            }));
+            });
         }
         
         return  (
@@ -86,6 +95,24 @@ function DeveloperTools(props: DeveloperToolsProps) {
         )
     }
 
+    function ShowApiLoadingState () {
+
+        const [ show, setShow ] = useState<boolean>(false);
+
+        const showApiState = () => {
+            const toShow = !show;
+            setShow(toShow);
+        }
+
+        return  (
+            <Panel className='dev-tools__show-api-state' type={PanelType.Box} title={t("dev-tools.show-api-state.title")}>
+            <div className='align-center button-field'>
+                <IconButton icon={<IconShow slashed={show}/>} onClick={showApiState} />
+            </div>
+        </Panel>
+        )
+    }
+
     const cheatCodedSequence: CheatCodeRevealingProps = {
         sequence    : [ "Digit1", "Digit3" ],
         specialKeys : [ SpecialKey.Alt, SpecialKey.Control ]
@@ -95,6 +122,7 @@ function DeveloperTools(props: DeveloperToolsProps) {
         <Panel icon={<IconBug/>} className="dev-tools" closable title={t("dev-tools.title")} cheatCoded={cheatCodedSequence} >
             <TriggerErrorMessage/>
             <ShowLoadingPage />
+            <ShowApiLoadingState/>
         </Panel>
     )
 }

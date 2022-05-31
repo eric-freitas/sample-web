@@ -1,5 +1,6 @@
 import React, { Children, ReactNode, useEffect, useState } from 'react';
 import { appendClassNames } from '../../static/utils';
+import ConditionalRendering from '../ConditionalRendering';
 import FormField, { BaseFormFieldProps, FormFieldStatus } from '../FormField';
 import IconChevron from '../Icons/Chevron';
 import RenderIfTrue from '../RenderIfTrue';
@@ -81,8 +82,6 @@ const Dropdown: React.FC<DropdownProps> = ( props ) =>  {
         );
     }
 
-    const flipChevron = show ? "flip-vertical": "";
-
     return (
         <div className='dropdown'>
             <FormField 
@@ -93,16 +92,18 @@ const Dropdown: React.FC<DropdownProps> = ( props ) =>  {
                 invalid        = { isInvalid }
                 fieldClassName = { appendClassNames(fieldClassName, "select"           ) }
                 className      = { appendClassNames(className, show ? "selected" : null) }
-                trailingIcon   = { <RenderIfTrue condition={!!trailingIcon} >
-                                        <IconChevron className={flipChevron} />
-                                   </RenderIfTrue>                                       }
+                trailingIcon   = { <ConditionalRendering 
+                                        condition   = { !!trailingIcon } 
+                                        ifTrue      = { trailingIcon   }
+                                        ifFalse     = { <IconChevron rotate={show ? 180 : undefined} /> }
+                                  /> }
                 siblings       = { <RenderIfTrue condition={show} >
-                                        <ul key="options" className='options'>
+                                        <ul key="options" id={`${id}_options`} className='options'>
                                             { Children.map(children, renderChild) }
                                         </ul>
-                                   </RenderIfTrue>                                       }
+                                   </RenderIfTrue> }
             >
-                <span id={id} className='input-area input'>
+                <span role="combobox" aria-controls={`${id}_options`} aria-expanded={show} id={id} className='input-area input'>
                     {selected}
                 </span>
             </FormField>
