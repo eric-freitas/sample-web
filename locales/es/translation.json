@@ -40,7 +40,8 @@
         },
         "display-icons": {
             "title": "Biblioteca de Iconos",
-            "slash": "Agregar una barra en los iconos"
+            "slash": "Agregar una barra en los iconos",
+            "rotate": "Girar iconos"
         }
     }
 }
