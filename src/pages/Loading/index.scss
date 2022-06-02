@@ -1,32 +1,7 @@
 @import '../../shared.scss';
 
-main.app {
-
-    justify-content: center;
-    align-items: center;
-
-    section.loading {
-        user-select: none;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        align-content: space-around;
-        flex-wrap: wrap;
-
-        @include icon-size(calc($def-padding*16));
-
-        background-color: $navy;
-
-        width: auto;
-        height: auto;
-
-        padding: calc($def-padding * 10);
-        border-radius: $def-padding;
-
-        p {
-            @include font-subtitle();
-        }
-
-    }
+.logo {
+    display: block;
+    width: 80%;
+    margin: calc($def-padding * 4);
 }

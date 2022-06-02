@@ -5,7 +5,7 @@
     height: 100%;
     box-sizing: border-box;
     margin: 0;
-    max-width: 33.33%;
+    width: clamp(calc($def-padding * 32), calc($def-padding * 78), 37%);
     
     & > section {
 

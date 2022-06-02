@@ -1,0 +1,36 @@
+@import '../../shared.scss';
+
+main.app {
+
+    justify-content: center;
+    align-items: center;
+
+    section.loading {
+        user-select: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-content: space-around;
+        flex-wrap: wrap;
+
+        @include icon-size(calc($def-padding*16));
+
+        background-color: $black;
+        background-image: linear-gradient(147deg,   $navy  0%, $black 74%);
+
+        box-sizing: border-box;
+        width: 80%;
+        height: 80%;
+
+        padding: calc($def-padding * 10);
+        border-radius: $def-padding;
+
+        p {
+            @include font-title();
+            font-size: 2em;
+            margin: calc($def-padding * 4);
+        }
+
+    }
+}

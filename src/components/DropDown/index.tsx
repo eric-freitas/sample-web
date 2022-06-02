@@ -1,6 +1,6 @@
 import React, { Children, ReactNode, useEffect, useState } from 'react';
 import { appendClassNames } from '../../static/utils';
-import ConditionalRendering from '../ConditionalRendering';
+import CoalesceRender from '../CoalesceRender';
 import FormField, { BaseFormFieldProps, FormFieldStatus } from '../FormField';
 import IconChevron from '../Icons/Chevron';
 import RenderIfTrue from '../RenderIfTrue';
@@ -92,11 +92,10 @@ const Dropdown: React.FC<DropdownProps> = ( props ) =>  {
                 invalid        = { isInvalid }
                 fieldClassName = { appendClassNames(fieldClassName, "select"           ) }
                 className      = { appendClassNames(className, show ? "selected" : null) }
-                trailingIcon   = { <ConditionalRendering 
-                                        condition   = { !!trailingIcon } 
-                                        ifTrue      = { trailingIcon   }
-                                        ifFalse     = { <IconChevron rotate={show ? 180 : undefined} /> }
-                                  /> }
+                trailingIcon   = { <CoalesceRender 
+                                        toRender   = { trailingIcon   }
+                                        defaultVal = { <IconChevron rotate={show ? 180 : undefined} /> }
+                                   /> }
                 siblings       = { <RenderIfTrue condition={show} >
                                         <ul key="options" id={`${id}_options`} className='options'>
                                             { Children.map(children, renderChild) }

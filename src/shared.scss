@@ -3,6 +3,7 @@
 
 $font-raleway : "Raleway", "Roboto", "Helvetica", Futura, sans-serif;
 $font-poppins : "Poppins", "Helvetica", Arial, sans-serif;
+$font-montserrat : "Montserrat", "Poppins", "Helvetica", Arial, sans-serif;
 
 $font-normal-text : $font-raleway;
 
@@ -87,16 +88,16 @@ $def-invalid-color 	: $red-lighter;
 @mixin font-title {
 	@include def-font();
 
-	font-family: $font-poppins;
-	font-weight: 300;
+	font-family: $font-montserrat;
+	font-weight: 500;
 	font-size: 1.15em;
 }
 
 @mixin font-subtitle {
 	@include def-font();
 
-	font-family: $font-raleway;
-	font-weight: 500;
+	font-family: $font-montserrat;
+	font-weight: 400;
 	font-size: 1em;
 }
 

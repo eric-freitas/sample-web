@@ -3,7 +3,7 @@ import { Route , Switch } from 'react-router-dom';
 /*import ProtectedRoute     from './components/ProtectedRoute';
 import UnprotectedRoute   from './components/UnprotectedRoute';
 */
-import Home     from './pages/Home';
+import Home     from '../pages/Home';
 
 export default function Routes() {
     /*return (

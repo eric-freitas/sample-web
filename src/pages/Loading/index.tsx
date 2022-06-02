@@ -4,17 +4,18 @@ import IconLoading from '../../components/Icons/Loading';
 import { useTranslation } from 'react-i18next';
 
 import './index.scss';
+import DefaultLoadingPage from '../../components/DefLoadingPage';
+import LogoAcCorp1 from '../../components/Logos/ACCorp1';
 
 export default function LoadingPage(){
 
 	const { t } = useTranslation();
 
     return (
-        <main className="app">
-    	    <section className='loading'>
-    			<IconLoading />
-				<p>{t("main.loading")}</p>
-		    </section>
-  	    </main>
+		<DefaultLoadingPage
+			text={t("main.loading")}
+			icon={<IconLoading/>}
+			logo={<LogoAcCorp1/>}
+		/>
     )
 }

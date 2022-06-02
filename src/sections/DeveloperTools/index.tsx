@@ -1,4 +1,4 @@
-import React, { useState }  from 'react';
+import React, { useState, useContext }  from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import allActions from '../../actions';
@@ -18,15 +18,18 @@ import Emojis from '../../components/Icons/Emojis';
 import './index.scss';
 import { camelCaseToWords, renderIcons } from '../../static/utils';
 import IconSlash from '../../components/Icons/Slash';
+import IconRotate from '../../components/Icons/Rotate';
+import AppContext from '../../context';
 
 export interface DeveloperToolsProps {
-    onRenderPage? : (page? : JSX.Element) => void;
-    loadingPage   : JSX.Element
+    onRenderPage? : (page? : JSX.Element) => void
 }
 
 function DeveloperTools(props: DeveloperToolsProps) {
 
-    const { onRenderPage, loadingPage } = props;
+    const { onRenderPage } = props;
+
+    const { loadingPage } = useContext(AppContext);
 
 	const { t } = useTranslation();
     const dispatch = useDispatch();
@@ -80,7 +83,7 @@ function DeveloperTools(props: DeveloperToolsProps) {
             const toShow = !show;
             setShow(toShow);
 
-            if(toShow) {
+            if(toShow && loadingPage) {
                 onRenderPage?.call(null, loadingPage)
             } else {
                 onRenderPage?.call(null);
@@ -127,6 +130,7 @@ function DeveloperTools(props: DeveloperToolsProps) {
 
     function DisplayIcons() {
         const [ slashed, setSlashed ] = useState<boolean>(false);
+        const [ rotate , setRotate  ] = useState<number>(0);
 
         interface DisplayIconProps {
             name     : string,
@@ -147,14 +151,23 @@ function DeveloperTools(props: DeveloperToolsProps) {
             return <DisplayIcon key={name} name={camelCaseToWords(name)}>{icon}</DisplayIcon>
         }
 
+        const doRotate = () => {
+            let newRotate = rotate + 45;
+            if (newRotate >= 360) {
+                newRotate = 0;
+            }
+            setRotate(newRotate);
+        }
+
         return  (
             <Panel className='dev-tools__display-icons' type={PanelType.Box} title={t("dev-tools.display-icons.title")}>
                 <nav>
-                    <IconButton borderless hint={t("dev-tools.display-icons.slash")} icon={<IconSlash/>} activated={slashed} onClick={() => setSlashed(!slashed)}/>
+                    <IconButton borderless hint={t("dev-tools.display-icons.slash") } icon={<IconSlash/>} activated={slashed} onClick={() => setSlashed(!slashed)}/>
+                    <IconButton borderless hint={t("dev-tools.display-icons.rotate")} icon={<IconRotate rotate={rotate}/>} activated={rotate !== 0} onClick={doRotate}/>
                 </nav>
                 <ul>
-                    {renderIcons(Icons,  { slashed, doNotAnimate : true }, renderIcon)}
-                    {renderIcons(Emojis, { slashed, doNotAnimate : true }, renderIcon)}
+                    {renderIcons(Icons,  { slashed, doNotAnimate : true, rotate }, renderIcon)}
+                    {renderIcons(Emojis, { slashed, doNotAnimate : true, rotate }, renderIcon)}
                 </ul>
             </Panel>
         )

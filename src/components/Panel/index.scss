@@ -45,6 +45,10 @@
             }
         }
 
+        h2 {
+            white-space: normal;    
+        }
+
         @include icon-size(calc($def-padding * 3));
     }
     

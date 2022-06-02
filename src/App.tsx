@@ -2,6 +2,7 @@ import React, { Suspense, useEffect, useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import ApiErrorMsg from './components/ApiErrorMsg';
 import ApiStatusLoading from './components/ApiStatus';
+import AppContext from './context';
 import DeveloperTools from './sections/DeveloperTools';
 
 /*	const currentUser = useSelector((state:AppState) => state.currentUser);
@@ -48,6 +49,10 @@ export default function App(props: AppProps) {
 
 	const { routes, loadingPage } = props;
 
+	const defaultContext = {
+		loadingPage
+	}
+
 	let onChangePage : SetPageToRenderCallback;
 
 	const onRef = (c: SetPageToRenderCallback) => {
@@ -59,15 +64,17 @@ export default function App(props: AppProps) {
 	};
 
 	return (
-    	<Suspense fallback={loadingPage}>
-      		<main className="App">
-			  <section>
-					<ApiStatusLoading />
-					<MainPage onRef={onRef} routes={routes}/>
-					<ApiErrorMsg />
-				</section>
-				<DeveloperTools onRenderPage={onRenderPage} loadingPage={loadingPage}/>
-			</main>
-    	</Suspense>
+		<AppContext.Provider value={defaultContext}>
+			<Suspense fallback={loadingPage}>
+				<main className="App">
+				<section>
+						<ApiStatusLoading />
+						<MainPage onRef={onRef} routes={routes}/>
+						<ApiErrorMsg />
+					</section>
+					<DeveloperTools onRenderPage={onRenderPage}/>
+				</main>
+			</Suspense>
+		</AppContext.Provider>
   	);
 }

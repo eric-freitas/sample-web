@@ -19,9 +19,10 @@ import Show from "./Show";
 import Timeout from "./Timeout";
 import Slash from "./Slash";
 import Search from './Search';
+import Rotate from "./Rotate";
 //import Unauthorized from "./Unauthorized";
 
-export { Bug, Chevron, Close, Conflict, Edit, Emoji, Key, Legal, Loading, Money, NotFound, PermissionDenied, Required, Running, Server, Show, Timeout, Slash, /*Unauthorized*/}
+export { Bug, Chevron, Close, Conflict, Edit, Emoji, Key, Legal, Loading, Money, NotFound, PermissionDenied, Required, Running, Server, Show, Timeout, Slash, Rotate, /*Unauthorized*/}
 
 const icons:IconRenderer = {
     bug              : (props?: BaseIconProps) => <Bug              {...props} />,
@@ -42,6 +43,7 @@ const icons:IconRenderer = {
     timeout          : (props?: BaseIconProps) => <Timeout          {...props} />,
     slash            : (props?: BaseIconProps) => <Slash            {...props} />,
     search           : (props?: BaseIconProps) => <Search           {...props} />,
+    rotate           : (props?: BaseIconProps) => <Rotate           {...props} />,
     //unauthorized     : () => <Unauthorized/>    ,
 }
 
