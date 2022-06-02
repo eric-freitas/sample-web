@@ -1,15 +1,24 @@
 @import '../../shared.scss';
 
-$button-border: $def-border-width;
+:root {
+    --button-bg               : transparent;
+    --button-color            : #{$def-font-color};
+    --button-border           : #{$def-font-color};
+    --button-activated-bg     : #{$def-font-color};
+    --button-activated-color  : #{$def-panel-bg};
+    --button-activated-border : #{$def-panel-bg};
+    --button-border-width     : #{$def-border-width};
+}
 
 .button {
     @include font-normal();
-    @include transparent-box();
+    @include transparent-box(var(--button-color));
+    border-color: var(--button-border);
    
     @include click-effect (
-        all-sides($button-border),
+        all-sides(var(--button-border-width)),
         horizontal-sides($def-padding),
-        $button-border
+        var(--button-border-width)
     );
 
     display: inline-flex;
@@ -18,6 +27,20 @@ $button-border: $def-border-width;
 
     &.borderless {
         @include borderless-click-effect();
+    }
+
+    &.activated {
+        //TODO var colors
+        background-color: var(--button-activated-bg);
+        color: var(--button-activated-color);
+        fill : var(--button-activated-color);
+        &:not(.borderless) {
+            border-color: var(--button-activated-border);
+        }
+
+        &:hover{
+            border-color: var(--button-activated-border);
+        }
     }
 
     & > * {

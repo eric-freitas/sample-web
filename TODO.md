@@ -3,17 +3,10 @@
 ## Todo
 
 - [ ] user data model
+- [ ] collapsible panels
 
 ## In progress
 
-- [ ] revise icons:
-  - [ ] chevron ???
-  - [ ] close
-  - [ ] edit
-  - [ ] key
-  - [ ] money
-  - [ ] required
-  - [ ] server
 - [ ] dev tools
   - [ ] options to icons:
     - [x] slash
@@ -21,3 +14,5 @@
     - [ ] color
 
 ## Done ✓
+
+- [x] revise icons:

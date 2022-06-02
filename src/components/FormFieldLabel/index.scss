@@ -5,5 +5,8 @@ label, legend {
     font-size: 0.9em;
     display: block;
 
-    @include icon-size(calc($def-padding * 2));
+    @include icon-size(calc($def-padding * 1.5));
+    .icon {
+        margin: 0 calc($def-padding / 2);
+    }
 }

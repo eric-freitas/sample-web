@@ -6,9 +6,9 @@
     --fieldset-border           : #{$def-fieldset-border};
     --fieldset-disabled-bg      : #{$disabled-bg};
     --fieldset-disabled-color   : #{$disabled-color};
-    --fieldset-valid-color      : #{$green};
-    --fieldset-invalid-color    : #{$red-lighter};
-    --fieldset-required-color   : #{$apricot};
+    --fieldset-valid-color      : #{$def-valid-color};
+    --fieldset-invalid-color    : #{$def-invalid-color};
+    --fieldset-required-color   : #{$def-required-color};
 }
 
 form {
@@ -24,6 +24,8 @@ form {
         margin: $def-padding 0;
         padding: 0;
         
+        @include change-label-required-color(var(--fieldset-required-color));
+
         &:hover:not(.disabled){
             border-color : var(--fieldset-border);
         }
@@ -35,40 +37,21 @@ form {
         }
         &.valid {
             border-left-color: var(--fieldset-valid-color) !important;
-            label, legend {
-                .icon-required {
-                    fill  : var(--fieldset-valid-color);
-                }
-            }
+            @include change-label-required-color(var(--fieldset-valid-color));
         }
         &.invalid {
             border-left-color: var(--fieldset-invalid-color) !important;
-            label, legend {
-                .icon-required {
-                    fill  : var(--fieldset-invalid-color);
-                }
-            }
+            @include change-label-required-color(var(--fieldset-invalid-color));
         }
 
         &.disabled {
             @include color(var(--fieldset-disabled-color));
+            @include change-label-required-color(var(--fieldset-disabled-color));
+            @include element-disabled();
             background-color: var(--fieldset-disabled-bg);
             border-color: var(--fieldset-disabled-bg);
-
-            & * {
-                cursor: not-allowed;
-                user-select: none;
-            }
-            
-
             input, .input {
                 color : var(--fieldset-color);
-            }
-        }
-
-        label, legend {
-            .icon-required {
-                fill  : var(--fieldset-required-color);
             }
         }
 

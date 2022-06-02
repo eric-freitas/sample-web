@@ -150,11 +150,11 @@ function DeveloperTools(props: DeveloperToolsProps) {
         return  (
             <Panel className='dev-tools__display-icons' type={PanelType.Box} title={t("dev-tools.display-icons.title")}>
                 <nav>
-                    <IconButton borderless hint={t("dev-tools.display-icons.slash")} icon={<IconSlash/>} className={slashed ? "activated" : ""} onClick={() => setSlashed(!slashed)}/>
+                    <IconButton borderless hint={t("dev-tools.display-icons.slash")} icon={<IconSlash/>} activated={slashed} onClick={() => setSlashed(!slashed)}/>
                 </nav>
                 <ul>
-                    {renderIcons(Icons,  { slashed }, renderIcon)}
-                    {renderIcons(Emojis, { slashed }, renderIcon)}
+                    {renderIcons(Icons,  { slashed, doNotAnimate : true }, renderIcon)}
+                    {renderIcons(Emojis, { slashed, doNotAnimate : true }, renderIcon)}
                 </ul>
             </Panel>
         )

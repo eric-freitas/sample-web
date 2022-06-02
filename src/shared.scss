@@ -59,6 +59,10 @@ $def-level3-bg: #3a2d49;
 $disabled-bg: #2d2d2d;
 $disabled-color: #919398;
 
+$def-valid-color	: $green;
+$def-required-color : $apricot;
+$def-invalid-color 	: $red-lighter;
+
 @mixin color ($color) {
 	color : $color;
 	fill  : $color;
@@ -108,10 +112,11 @@ $disabled-color: #919398;
 	border-radius: $corner;
 }
 
-@mixin transparent-box {
+@mixin transparent-box($color: $def-font-color) {
 	@include round-corner-box();
 	background-color: transparent;
-	color: $def-font-color;
+	color : $color;
+	fill  : $color;
 }
 
 @mixin gap($width: $def-padding) {
@@ -284,4 +289,24 @@ $disabled-color: #919398;
     &:disabled{
         background-color: initial;
     }
+}
+
+
+
+@mixin change-label-required-color($color: $def-required-color) {
+	label, legend {
+		.icon-required {
+			@include color($color);
+		}
+	}
+}
+
+@mixin element-disabled() {
+	cursor: not-allowed;
+	user-select: none;
+	
+	& * {
+		cursor: not-allowed;
+		user-select: none;
+	}
 }

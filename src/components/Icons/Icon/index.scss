@@ -14,10 +14,14 @@
         aspect-ratio: 1;
         
         .smiley {
-            .smiley_bg {
+            .smiley-bg {
                 fill: none;
             }
         }
+    }
+
+    &.not-animated {
+        animation: none !important;
     }
 }
 

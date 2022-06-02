@@ -7,6 +7,7 @@ export interface BaseIconProps {
     slashed?        : boolean,
     className?      : string,
     rotate?         : number,
+    doNotAnimate?   : boolean,
     [key: string]   : any
 }
 
@@ -21,8 +22,11 @@ export default abstract class BaseIcon extends React.Component<BaseIconProps> {
 
         const { width, height, props } = this;
 
-        const { slashed, className: classFromProps, ...otherProps} = props;
-        const classToApply = appendClassNames(`${(classFromProps ?? "")} ${(this.className ?? "")}`);
+        const { slashed, className: classFromProps, doNotAnimate, ...otherProps} = props;
+        const classToApply = appendClassNames(
+                `${(classFromProps ?? "")} ${(this.className ?? "")}`,
+                (doNotAnimate ? "not-animated" : "")
+        );
 
         
         let { content } = this;

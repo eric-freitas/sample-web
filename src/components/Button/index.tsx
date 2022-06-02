@@ -24,15 +24,17 @@ export interface ButtonProps {
     onClick?      : SimpleCallback,
     submitAction? : SubmitAction,
     hint?         : string,
-    borderless?   : boolean
+    borderless?   : boolean,
+    activated?    : boolean
 }
 
 export default function Button (props: ButtonProps){
     
-    const { name, id, className, text, status, submitAction, hint, borderless, onClick } = props ?? {};
+    const { name, id, className, text, status, submitAction, hint, borderless, activated, onClick } = props ?? {};
     const classToApply  = appendClassNames(
                             `button ${className ?? ""}`.trim(), 
-                            (borderless ? "borderless" : "")
+                            (borderless ? "borderless" : ""),
+                            (activated  ? "activated"  : "")
                         );
     
     const disabled      = (status === FormFieldStatus.Disabled) || undefined;
