@@ -1,6 +1,7 @@
 {
     "main": {
-        "name": "Ejemplo"
+        "name": "Ejemplo",
+        "loading": "Cargando..."
     },
     "errors":{
         "title" :{
@@ -27,7 +28,19 @@
         "trigger-error": {
             "title" : "Disparar Mensaje de Error",
             "type": "Tipo",
+            "msg": "Mensaje",
             "button" : "Exhibir"
+        },
+        "show-load-page": {
+            "title": "Exhibir Pantalla de Carga",
+            "show": "Exhibir"
+        },
+        "show-api-state": {
+            "title": "Exhibir Icono de Espera de API"
+        },
+        "display-icons": {
+            "title": "Biblioteca de Iconos",
+            "slash": "Agregar una barra en los iconos"
         }
     }
 }
