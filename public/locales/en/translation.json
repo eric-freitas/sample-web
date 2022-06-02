@@ -40,7 +40,8 @@
         },
         "display-icons": {
             "title": "Icon Library",
-            "slash": "Slash Icons"
+            "slash": "Slash Icons",
+            "rotate": "Rotate Icons"
         }
     }
 }

@@ -1,0 +1,6 @@
+.slash-group {
+    transform-origin: center;
+    & * {
+        transform-origin: center;
+    }
+}
