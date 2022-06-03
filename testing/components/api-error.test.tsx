@@ -11,8 +11,6 @@ import { render } from '@testing-library/react';
 import { sleep } from '../../src/static/utils';
 import { act } from 'react-dom/test-utils';
 
-
-
 describe("Api Error Msg Component test", () => {
 
     it ("should not render an error message", () => {

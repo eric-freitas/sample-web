@@ -1,6 +1,6 @@
 import 'jest-extended/all'
 import '@testing-library/jest-dom';
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { render } from '@testing-library/react';
 import Dropdown, { DropDownItem } from '../../src/components/DropDown';
 import userEvent from '@testing-library/user-event';
