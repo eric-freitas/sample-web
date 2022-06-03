@@ -25,7 +25,7 @@ export default function Home(){
             <div>
                 <span>Data</span>
 
-                <Button text="Button"/>
+                <Button text="Button" activated borderless className='jest-class1 jest-class-2' hint='jest-hint' id='jest-id' name='jest-name' status={FormFieldStatus.Enabled}/>
 
                 <Button borderless text="X" />
 

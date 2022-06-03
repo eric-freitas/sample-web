@@ -88,5 +88,18 @@ describe("Button Component Test", () => {
         expect(container.innerHTML).toBe(`<button class="button" form="jest-form" formaction="jest-url" formenctype="jest-encryption" formmethod="get" formnovalidate="" formtarget="jest-target" type="reset" value="jest-value">jest-button</button>`);
     })
 
+    it("should render a button with all together", () => {
+        let fired = false;
+        const onClick = () => fired = true;
+
+        const { container } = render(<Button text="Button" activated borderless className='jest-class1 jest-class-2' hint='jest-hint' id='jest-id' name='jest-name' status={FormFieldStatus.Enabled} onClick={onClick}/>);
+        expect(container.innerHTML).toBe(`<button name="jest-name" id="jest-id" class="button jest-class1 jest-class-2 borderless activated" title="jest-hint" type="button">Button</button>`);
+        expect(fired).toBe(false);
+
+        const button = container.querySelector("button");
+        userEvent.click(button);
+        expect(fired).toBe(true);
+    })
+
 
 })
