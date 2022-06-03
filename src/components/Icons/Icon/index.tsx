@@ -1,5 +1,6 @@
 import React from 'react';
 import { MouseEventHandler } from "react";
+import { appendClassNames } from '../../../static/utils';
 
 import './index.scss';
 
@@ -17,7 +18,9 @@ const Icon: React.FC<IconProps> = ({ children, ...props }) => {
         style.transform = `rotate(${rotate}deg)`;
     }
 
-    return <span onClick={onClick} className={`icon ${className || ""}`} style={style}>
+    const classToApply = appendClassNames(className, "icon");
+
+    return <span onClick={onClick} className={classToApply} style={style}>
                 {children}
             </span>;
 }

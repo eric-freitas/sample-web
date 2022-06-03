@@ -1,67 +1,35 @@
 import 'jest-extended';
 import React from 'react';
-import {act} from 'react-dom/test-utils';
 import * as ReactDOM from "react-dom";
 import Icon from '../../src/components/Icons/Icon';
- 
-import { fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react'; 
+import userEvent from '@testing-library/user-event';
 
 describe("Icon Component test", () => {
 
     it ("should render an icon", () => {
-
-        let container = document.createElement('div');
-        document.body.appendChild(container);
-        act(() => {
-            ReactDOM.render(<Icon> <span>ICON</span> </Icon>, container);
-        })
-
-        const parent = container.querySelector(".icon");
-        expect(parent.children.length).toBe(1);
-        const classes = parent.className.split(" ").filter(Boolean);
-        expect(classes).toStrictEqual(["icon"]);
-        
-        const [ icon_content ] = parent.children;
-        expect(icon_content.textContent).toBe("ICON");
+        const { container } = render(<Icon><span>ICON</span></Icon>);
+        expect(container.innerHTML).toBe(`<span class="icon"><span>ICON</span></span>`);
     });
 
     it ("should render an icon with a class", () => {
-        let container = document.createElement('div');
-        document.body.appendChild(container);
-        act(() => {
-            ReactDOM.render(<Icon className='jest-icon'> <span>ICON</span> </Icon>, container);
-        })
+        const { container } = render(<Icon className='jest-class1 jest-class2'><span>ICON</span></Icon>);
+        expect(container.innerHTML).toBe(`<span class="jest-class1 jest-class2 icon"><span>ICON</span></span>`);
+    });
 
-        const parent = container.querySelector(".icon");
-        expect(parent.children.length).toBe(1);
-        const classes = parent.className.split(" ").filter(Boolean);
-        expect(classes).toContain("icon")
-        expect(classes).toContain("jest-icon")
-        expect(classes).toBeArrayOfSize(2);
+    it ("should fire onClick event", () => {
+        let fired = false;
+        const onClick = () => fired = true;
+
+        const { container } = render(<Icon onClick={onClick}><span>ICON</span></Icon>);
+        expect(container.innerHTML).toBe(`<span class="icon"><span>ICON</span></span>`);
+        expect(fired).toBe(false);
+
+        const button = container.querySelector(".icon");
+        userEvent.click(button);
+        expect(fired).toBe(true);
         
-        const [ icon_content ] = parent.children;
-        expect(icon_content.textContent).toBe("ICON");
+        expect(container.innerHTML).toBe(`<span class="icon"><span>ICON</span></span>`);
+    });
 
-    })
-
-
-    it ("should fire an event onClick", () => {
-        let container = document.createElement('div');
-        document.body.appendChild(container);
-        let clicked = false;
-
-        const done = () => {
-            clicked = true;
-        }
-
-        act(() => {
-            ReactDOM.render(<Icon className='jest-icon' onClick={done}> <span>ICON</span> </Icon>, container);
-        })
-
-        const parent = container.querySelector(".icon");
-        fireEvent.click(parent);
-
-        expect(clicked).toBeTrue();
-
-    })
 })

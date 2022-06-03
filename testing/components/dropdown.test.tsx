@@ -38,7 +38,7 @@ describe("Dropdown Component Test", () => {
         expect(container.innerHTML).toBe(expanded);
 
         userEvent.click(fieldset);
-        const afterCollapse = container.innerHTML.replace(/class=\"icon icon-chevron\" style=\"\"/, "class=\"icon icon-chevron\"");
+        const afterCollapse = container.innerHTML.replace(/class=\"icon-chevron icon\" style=\"\"/, "class=\"icon-chevron icon\"");
         expect(afterCollapse).toBe(collapsed);
     })
 
@@ -54,7 +54,7 @@ describe("Dropdown Component Test", () => {
         expect(container.innerHTML).toBe(expanded);
 
         userEvent.click(fieldset);
-        const afterCollapse = container.innerHTML.replace(/class=\"icon icon-chevron\" style=\"\"/, "class=\"icon icon-chevron\"");
+        const afterCollapse = container.innerHTML.replace(/class=\"icon-chevron icon\" style=\"\"/, "class=\"icon-chevron icon\"");
         expect(afterCollapse).toBe(collapsed);
     })
 
@@ -70,7 +70,7 @@ describe("Dropdown Component Test", () => {
         expect(container.innerHTML).toBe(expanded);
 
         userEvent.click(fieldset);
-        const afterCollapse = container.innerHTML.replace(/class=\"icon icon-chevron\" style=\"\"/, "class=\"icon icon-chevron\"");
+        const afterCollapse = container.innerHTML.replace(/class=\"icon-chevron icon\" style=\"\"/, "class=\"icon-chevron icon\"");
         expect(afterCollapse).toBe(collapsed);
     })
 
@@ -89,7 +89,7 @@ describe("Dropdown Component Test", () => {
         userEvent.click(option);
 
         const selected = `<div class="dropdown"><fieldset class=""><label>jest-drop</label><div class="select form-field"><span class="form-field__content form-field__content_initial"><span role="combobox" aria-controls="dropdown_options" aria-expanded="false" class="input-area input">A</span></span><span class="form-field__content">${chevron}</span></div></fieldset></div>`;
-        const afterCollapse = container.innerHTML.replace(/class=\"icon icon-chevron\" style=\"\"/, "class=\"icon icon-chevron\"");
+        const afterCollapse = container.innerHTML.replace(/class=\"icon-chevron icon\" style=\"\"/, "class=\"icon-chevron icon\"");
         expect(afterCollapse).toBe(selected);
     })
 
@@ -107,7 +107,7 @@ describe("Dropdown Component Test", () => {
         const toSelect = container.querySelector("#to-select");
         userEvent.click(toSelect);
         const selected = `<div class="dropdown"><fieldset class=""><label>jest-drop</label><div class="select form-field"><span class="form-field__content form-field__content_initial"><span role="combobox" aria-controls="dropdown_options" aria-expanded="false" class="input-area input"><div id="to-select">B</div></span></span><span class="form-field__content">${chevron}</span></div></fieldset></div>`;
-        const afterCollapse = container.innerHTML.replace(/class=\"icon icon-chevron\" style=\"\"/, "class=\"icon icon-chevron\"");
+        const afterCollapse = container.innerHTML.replace(/class=\"icon-chevron icon\" style=\"\"/, "class=\"icon-chevron icon\"");
         expect(afterCollapse).toBe(selected);
     })
 
@@ -130,7 +130,7 @@ describe("Dropdown Component Test", () => {
         expect(container.innerHTML).toBe(expanded);
 
         userEvent.click(fieldset);
-        const afterCollapse = container.innerHTML.replace(/class=\"icon icon-chevron\" style=\"\"/, "class=\"icon icon-chevron\"");
+        const afterCollapse = container.innerHTML.replace(/class=\"icon-chevron icon\" style=\"\"/, "class=\"icon-chevron icon\"");
         expect(afterCollapse).toBe(collapsed);
     });
 
@@ -152,7 +152,7 @@ describe("Dropdown Component Test", () => {
         expect(container.innerHTML).toBe(expanded);
 
         userEvent.click(fieldset);
-        const afterCollapse = container.innerHTML.replace(/class=\"icon icon-chevron\" style=\"\"/, "class=\"icon icon-chevron\"");
+        const afterCollapse = container.innerHTML.replace(/class=\"icon-chevron icon\" style=\"\"/, "class=\"icon-chevron icon\"");
         expect(afterCollapse).toBe(collapsed);
     });
 
@@ -168,7 +168,7 @@ describe("Dropdown Component Test", () => {
         expect(container.innerHTML).toBe(expanded);
 
         userEvent.click(fieldset);
-        const afterCollapse = container.innerHTML.replace(/class=\"icon icon-chevron\" style=\"\"/, "class=\"icon icon-chevron\"");
+        const afterCollapse = container.innerHTML.replace(/class=\"icon-chevron icon\" style=\"\"/, "class=\"icon-chevron icon\"");
         expect(afterCollapse).toBe(collapsed);
     });
 
@@ -184,7 +184,7 @@ describe("Dropdown Component Test", () => {
         expect(container.innerHTML).toBe(expanded);
 
         userEvent.click(fieldset);
-        const afterCollapse = container.innerHTML.replace(/class=\"icon icon-chevron\" style=\"\"/, "class=\"icon icon-chevron\"");
+        const afterCollapse = container.innerHTML.replace(/class=\"icon-chevron icon\" style=\"\"/, "class=\"icon-chevron icon\"");
         expect(afterCollapse).toBe(collapsed);
     });
 
@@ -200,7 +200,7 @@ describe("Dropdown Component Test", () => {
         expect(container.innerHTML).toBe(expanded);
 
         userEvent.click(fieldset);
-        const afterCollapse = container.innerHTML.replace(/class=\"icon icon-chevron\" style=\"\"/, "class=\"icon icon-chevron\"");
+        const afterCollapse = container.innerHTML.replace(/class=\"icon-chevron icon\" style=\"\"/, "class=\"icon-chevron icon\"");
         expect(afterCollapse).toBe(collapsed);
     });
 
@@ -216,7 +216,7 @@ describe("Dropdown Component Test", () => {
         expect(container.innerHTML).toBe(expanded);
 
         userEvent.click(fieldset);
-        const afterCollapse = container.innerHTML.replace(/class=\"icon icon-chevron\" style=\"\"/, "class=\"icon icon-chevron\"");
+        const afterCollapse = container.innerHTML.replace(/class=\"icon-chevron icon\" style=\"\"/, "class=\"icon-chevron icon\"");
         expect(afterCollapse).toBe(collapsed);
     });
 
@@ -252,7 +252,7 @@ describe("Dropdown Component Test", () => {
         expect(selectedItem).toBe("A");
 
         const selected = `<div class="dropdown"><fieldset class=""><label>jest-drop</label><div class="select form-field"><span class="form-field__content form-field__content_initial"><span role="combobox" aria-controls="dropdown_options" aria-expanded="false" class="input-area input">A</span></span><span class="form-field__content">${chevron}</span></div></fieldset></div>`;
-        const afterCollapse = container.innerHTML.replace(/class=\"icon icon-chevron\" style=\"\"/, "class=\"icon icon-chevron\"");
+        const afterCollapse = container.innerHTML.replace(/class=\"icon-chevron icon\" style=\"\"/, "class=\"icon-chevron icon\"");
         expect(afterCollapse).toBe(selected);
     });
 
@@ -271,7 +271,7 @@ describe("Dropdown Component Test", () => {
         const toSelect = container.querySelector(".dropdown__simple-item:first-child");
         userEvent.click(toSelect);
 
-        const afterCollapse = container.innerHTML.replace(/class=\"icon icon-chevron\" style=\"\"/, "class=\"icon icon-chevron\"");
+        const afterCollapse = container.innerHTML.replace(/class=\"icon-chevron icon\" style=\"\"/, "class=\"icon-chevron icon\"");
         expect(afterCollapse).toBe(selected);
     });
 
@@ -286,7 +286,7 @@ describe("Dropdown Component Test", () => {
         expect(container.innerHTML).toBe(expanded);
 
         userEvent.click(fieldset);
-        let afterCollapse = container.innerHTML.replace(/class=\"icon icon-chevron\" style=\"\"/, "class=\"icon icon-chevron\"");
+        let afterCollapse = container.innerHTML.replace(/class=\"icon-chevron icon\" style=\"\"/, "class=\"icon-chevron icon\"");
         const invalid_collapsed = `<div class="dropdown"><fieldset class="invalid"><label>jest-drop${required}</label><div class="select form-field"><span class="form-field__content form-field__content_initial"><span role="combobox" aria-controls="dropdown_options" aria-expanded="false" class="input-area input"></span></span><span class="form-field__content">${chevron}</span></div></fieldset></div>`;
         expect(afterCollapse).toBe(invalid_collapsed);
 
@@ -294,7 +294,7 @@ describe("Dropdown Component Test", () => {
         const toSelect = container.querySelector(".dropdown__simple-item:first-child");
         userEvent.click(toSelect);
 
-        afterCollapse = container.innerHTML.replace(/class=\"icon icon-chevron\" style=\"\"/, "class=\"icon icon-chevron\"");
+        afterCollapse = container.innerHTML.replace(/class=\"icon-chevron icon\" style=\"\"/, "class=\"icon-chevron icon\"");
         const valid_collapsed = `<div class="dropdown"><fieldset class=""><label>jest-drop${required}</label><div class="select form-field"><span class="form-field__content form-field__content_initial"><span role="combobox" aria-controls="dropdown_options" aria-expanded="false" class="input-area input">A</span></span><span class="form-field__content">${chevron}</span></div></fieldset></div>`;
         expect(afterCollapse).toBe(valid_collapsed);
     });
@@ -311,7 +311,7 @@ describe("Dropdown Component Test", () => {
         expect(container.innerHTML).toBe(expanded);
 
         userEvent.click(fieldset);
-        const afterCollapse = container.innerHTML.replace(/class=\"icon icon-chevron\" style=\"\"/, "class=\"icon icon-chevron\"");
+        const afterCollapse = container.innerHTML.replace(/class=\"icon-chevron icon\" style=\"\"/, "class=\"icon-chevron icon\"");
         expect(afterCollapse).toBe(collapsed);
     })
 
@@ -341,7 +341,7 @@ describe("Dropdown Component Test", () => {
         const toSelect = container.querySelector(".dropdown__simple-item:first-child");
         userEvent.click(toSelect);
 
-        const afterCollapse = container.innerHTML.replace(/class=\"icon icon-chevron\" style=\"\"/, "class=\"icon icon-chevron\"");
+        const afterCollapse = container.innerHTML.replace(/class=\"icon-chevron icon\" style=\"\"/, "class=\"icon-chevron icon\"");
         expect(afterCollapse).toBe(selected);
     });
 
@@ -372,7 +372,7 @@ describe("Dropdown Component Test", () => {
         expect(container.innerHTML).toBe(expanded);
 
         userEvent.click(fieldset);
-        const afterCollapse = container.innerHTML.replace(/class=\"icon icon-chevron\" style=\"\"/, "class=\"icon icon-chevron\"");
+        const afterCollapse = container.innerHTML.replace(/class=\"icon-chevron icon\" style=\"\"/, "class=\"icon-chevron icon\"");
         expect(afterCollapse).toBe(collapsed);
     })
 
@@ -391,7 +391,7 @@ describe("Dropdown Component Test", () => {
         userEvent.click(option);
 
         const selected = `<div class="dropdown"><fieldset class=""><label>jest-drop</label><div class="select form-field"><span class="form-field__content form-field__content_initial"><span role="combobox" aria-controls="dropdown_options" aria-expanded="false" class="input-area input">A</span></span><span class="form-field__content">${chevron}</span></div></fieldset></div>`;
-        const afterCollapse = container.innerHTML.replace(/class=\"icon icon-chevron\" style=\"\"/, "class=\"icon icon-chevron\"");
+        const afterCollapse = container.innerHTML.replace(/class=\"icon-chevron icon\" style=\"\"/, "class=\"icon-chevron icon\"");
         expect(afterCollapse).toBe(selected);
     })
 
@@ -410,7 +410,7 @@ describe("Dropdown Component Test", () => {
         userEvent.click(option);
 
         const selected = `<div class="dropdown"><fieldset class=""><label>jest-drop</label><div class="select form-field"><span class="form-field__content form-field__content_initial"><span role="combobox" aria-controls="dropdown_options" aria-expanded="false" class="input-area input">1</span></span><span class="form-field__content">${chevron}</span></div></fieldset></div>`;
-        const afterCollapse = container.innerHTML.replace(/class=\"icon icon-chevron\" style=\"\"/, "class=\"icon icon-chevron\"");
+        const afterCollapse = container.innerHTML.replace(/class=\"icon-chevron icon\" style=\"\"/, "class=\"icon-chevron icon\"");
         expect(afterCollapse).toBe(selected);
     })
 
@@ -430,7 +430,7 @@ describe("Dropdown Component Test", () => {
         userEvent.click(option);
 
         const selected = `<div class="dropdown"><fieldset class=""><label>jest-drop</label><div class="select form-field"><span class="form-field__content form-field__content_initial"><span role="combobox" aria-controls="dropdown_options" aria-expanded="false" class="input-area input"><div id="div-1">A</div></span></span><span class="form-field__content">${chevron}</span></div></fieldset></div>`;
-        const afterCollapse = container.innerHTML.replace(/class=\"icon icon-chevron\" style=\"\"/, "class=\"icon icon-chevron\"");
+        const afterCollapse = container.innerHTML.replace(/class=\"icon-chevron icon\" style=\"\"/, "class=\"icon-chevron icon\"");
         expect(afterCollapse).toBe(selected);
     })
 
