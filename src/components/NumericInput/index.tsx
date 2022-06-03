@@ -14,8 +14,6 @@ export interface NumericInputProps extends BaseFormFieldProps {
     onChange?: (newValue: number | null) => void;
 }
 
-//TODO automatic test
-
 const NumericInput: React.FC<NumericInputProps> = ( props ) =>  {
     const { id, status, invalid, value, required, fieldClassName, min, max } = props ?? {};
     const disabled = status === FormFieldStatus.Disabled;

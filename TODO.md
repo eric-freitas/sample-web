@@ -9,6 +9,10 @@
 ## In progress
 
 - [ ] testing for all components
+  - [ ] base icon
+  - [ ] numeric input
+  - [ ] panel
+  - [ ] unprotected route
 - [ ] dev tools
   - [ ] options to icons:
     - [x] slash
