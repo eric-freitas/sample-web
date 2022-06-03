@@ -1,5 +1,5 @@
 import React  from 'react';
-import Button from '../../components/Button';
+import Button, { SubmitAction } from '../../components/Button';
 import Panel from '../../components/Panel';
 import IconBug from '../../components/Icons/Bug';
 
@@ -25,7 +25,7 @@ export default function Home(){
             <div>
                 <span>Data</span>
 
-                <Button text="teste" />
+                <Button text="Button"/>
 
                 <Button borderless text="X" />
 

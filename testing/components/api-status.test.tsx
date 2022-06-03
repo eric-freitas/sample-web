@@ -36,15 +36,11 @@ describe("Api Status Component test", () => {
         let content = container.querySelector(".top");
 
         expect(content.children.length).toBe(1);
-        const [ loadingIcon ] = content.children;
-        const classes = loadingIcon.className.split(" ");
-        expect(classes).toContain("icon");
-        expect(classes).toContain("step-spinner");
-        expect(classes).toContain("api-status");
         await sleep(1000);
         
         content = container.querySelector(".api-status");
         expect(content).not.toBeNull();
+
         store
             .dispatch(
                 allActions.apiExec.setApiStatus(
