@@ -10,7 +10,6 @@ export interface IconButtonProps extends ButtonProps {
 export default function IconButton(props:IconButtonProps) {
 
     const { icon, text, ...otherProps } = props;
-
     const innerContent = (text && <span>{text}</span>)
 
     const content = (
@@ -20,5 +19,5 @@ export default function IconButton(props:IconButtonProps) {
         </>
     )
 
-    return <Button  {...otherProps} text={content} />
+    return <Button {...otherProps} text={content} />
 }
