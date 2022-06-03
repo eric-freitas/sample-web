@@ -2,20 +2,21 @@
 
 ## Todo
 
-- [ ] audit vulnerabilities
-- [ ] user data model
 - [ ] collapsible panels
-- [ ] do not rotate icon slash
+- [ ] readme
+- [ ] user data model
 
 ## In progress
 
+- [ ] testing for all components
 - [ ] dev tools
   - [ ] options to icons:
     - [x] slash
     - [x] rotate
     - [ ] color
-- [ ] loading page template
 
 ## Done ✓
 
 - [x] revise icons:
+- [x] loading page template
+- [x] audit vulnerabilities
