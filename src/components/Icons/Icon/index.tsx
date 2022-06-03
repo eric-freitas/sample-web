@@ -17,7 +17,7 @@ const Icon: React.FC<IconProps> = ({ children, ...props }) => {
         style.transform = `rotate(${rotate}deg)`;
     }
 
-    return <span style={style} onClick={onClick} className={`icon ${className || ""}`}>
+    return <span onClick={onClick} className={`icon ${className || ""}`} style={style}>
                 {children}
             </span>;
 }

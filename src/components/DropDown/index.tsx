@@ -10,15 +10,13 @@ import './index.scss';
 export type DropDownItem = string | number | ReactNode;
 
 export interface DropdownProps extends BaseFormFieldProps {
-    id     : string,
+    id?    : string,
     value? : DropDownItem | null
     
     onSelected? : (item: DropDownItem) => void,
 
     children?   : DropDownItem | DropDownItem[] 
 }
-
-//TODO test and refactor
 
 const Dropdown: React.FC<DropdownProps> = ( props ) =>  {
     const { 
@@ -40,8 +38,9 @@ const Dropdown: React.FC<DropdownProps> = ( props ) =>  {
     if (_children && typeof(selectedVal) !== 'object' && !_children.find(e => e == selectedVal)) {
         const findChild = (child: DropDownItem, val: any) => {
             const e = (child as any);
+            const dataToCheck = e.props ?? e;
             // eslint-disable-next-line eqeqeq
-            return (e.val ?? e.value ?? e.id ?? e.key ?? e) == val;
+            return (dataToCheck.id || dataToCheck.value || dataToCheck.val || dataToCheck.key || dataToCheck) == val;
         }
         selectedVal = _children.find(e => findChild(e, selectedVal));
     }
@@ -82,6 +81,8 @@ const Dropdown: React.FC<DropdownProps> = ( props ) =>  {
         );
     }
 
+    const option_id = `${(id || "dropdown")}_options`;
+
     return (
         <div className='dropdown'>
             <FormField 
@@ -97,12 +98,12 @@ const Dropdown: React.FC<DropdownProps> = ( props ) =>  {
                                         defaultVal = { <IconChevron rotate={show ? 180 : undefined} /> }
                                    /> }
                 siblings       = { <RenderIfTrue condition={show} >
-                                        <ul key="options" id={`${id}_options`} className='options'>
+                                        <ul key="options" id={option_id} className='options'>
                                             { Children.map(children, renderChild) }
                                         </ul>
                                    </RenderIfTrue> }
             >
-                <span role="combobox" aria-controls={`${id}_options`} aria-expanded={show} id={id} className='input-area input'>
+                <span role="combobox" aria-controls={option_id} aria-expanded={show} id={id} className='input-area input'>
                     {selected}
                 </span>
             </FormField>
