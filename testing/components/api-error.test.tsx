@@ -6,7 +6,6 @@ import allActions from '../../src/actions';
 import rootReducer from '../../src/reducers'
 import { configureStore } from '@reduxjs/toolkit';
 
-import '../../src/i18n';
 import { ApiExecStatus } from '../../src/models/ApiExec';
 import { render } from '@testing-library/react';
 import { sleep } from '../../src/static/utils';

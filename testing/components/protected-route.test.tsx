@@ -6,7 +6,6 @@ import ProtectedRoute from '../../src/components/ProtectedRoute';
 import {render, screen} from '@testing-library/react'
 import '@testing-library/jest-dom'
 
-import '../../src/i18n';
 import { Route, Router, Switch } from 'react-router-dom';
 
 const JestProtected = () => {
