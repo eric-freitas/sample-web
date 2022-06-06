@@ -1,6 +1,6 @@
 import React, { useEffect, useState }               from 'react';
 import { cheatCoder } from '../../static/cheatCoder';
-import { appendClassNames, SimpleCallback } from '../../static/utils';
+import { appendClassNames, defaultsToTrue, SimpleCallback } from '../../static/utils';
 import { CheatCodeRevealingProps } from '../CheatCodeRevealing';
 import IconButton from '../IconButton';
 import IconClose from '../Icons/Close';
@@ -26,7 +26,8 @@ interface PanelProps {
 
 const Panel: React.FC<PanelProps> = ({ children, ...props }) =>  {
     const { title, icon, closable, className, cheatCoded, onClose, type, visible } = props;
-    const [ show, setShow ] = useState<boolean>(true);
+    const _visible = defaultsToTrue(visible);
+    const [ show, setShow ] = useState<boolean>(_visible);
 
     const onClick = () => {
         setShow(false);

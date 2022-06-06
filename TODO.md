@@ -4,6 +4,10 @@
 
 - [ ] collapsible panels
 - [ ] readme
+- [ ] login
+  - [ ] Google
+  - [ ] Facebook
+  - [ ] Azure Active Directory
 - [ ] user data model
 
 ## In progress

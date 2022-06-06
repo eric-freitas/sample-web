@@ -1,5 +1,5 @@
 import React  from 'react';
-import Button, { SubmitAction } from '../../components/Button';
+import Button from '../../components/Button';
 import Panel from '../../components/Panel';
 import IconBug from '../../components/Icons/Bug';
 

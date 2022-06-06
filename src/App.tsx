@@ -2,8 +2,9 @@ import React, { Suspense, useEffect, useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import ApiErrorMsg from './components/ApiErrorMsg';
 import ApiStatusLoading from './components/ApiStatus';
-import AppContext from './context';
 import DeveloperTools from './sections/DeveloperTools';
+import AppProps from './models/AppProps';
+import appDataManager from './static/appDataManager';
 
 /*	const currentUser = useSelector((state:AppState) => state.currentUser);
 	useEffect(() => {
@@ -22,13 +23,12 @@ const defaultRouter = (routes: JSX.Element) => (
 
 interface InitialSectionProps {
 	onRef? : (callback: SetPageToRenderCallback) => void;
-	routes : JSX.Element
 }
 
 function MainPage(props: InitialSectionProps) {
 
-	const { onRef, routes } = props;
-	
+	const { onRef } = props;
+	const { routes } = appDataManager.get();
 	const [ pageToRender, setPageToRender ] = useState<JSX.Element>(defaultRouter(routes));
 
 	useEffect(() => {
@@ -40,18 +40,9 @@ function MainPage(props: InitialSectionProps) {
 	return pageToRender;
 }
 
-export interface AppProps {
-	routes 		: JSX.Element,
-	loadingPage : JSX.Element
-}
-
 export default function App(props: AppProps) {
-
-	const { routes, loadingPage } = props;
-
-	const defaultContext = {
-		loadingPage
-	}
+	const { loadingPage } = props;
+	appDataManager.set(props);
 
 	let onChangePage : SetPageToRenderCallback;
 
@@ -62,19 +53,17 @@ export default function App(props: AppProps) {
 	const onRenderPage = (newPage? : JSX.Element) => {
 		onChangePage?.call(null, newPage);
 	};
-
+	
 	return (
-		<AppContext.Provider value={defaultContext}>
-			<Suspense fallback={loadingPage}>
-				<main className="App">
+		<Suspense fallback={loadingPage}>
+			<main className="App">
 				<section>
-						<ApiStatusLoading />
-						<MainPage onRef={onRef} routes={routes}/>
-						<ApiErrorMsg />
-					</section>
-					<DeveloperTools onRenderPage={onRenderPage}/>
-				</main>
-			</Suspense>
-		</AppContext.Provider>
+					<ApiStatusLoading />
+					<MainPage onRef={onRef} />
+					<ApiErrorMsg />
+				</section>
+				<DeveloperTools onRenderPage={onRenderPage}/>
+			</main>
+		</Suspense>
   	);
 }

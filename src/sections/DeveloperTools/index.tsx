@@ -1,4 +1,4 @@
-import React, { useState, useContext }  from 'react';
+import React, { useState }  from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import allActions from '../../actions';
@@ -19,23 +19,21 @@ import './index.scss';
 import { camelCaseToWords, renderIcons } from '../../static/utils';
 import IconSlash from '../../components/Icons/Slash';
 import IconRotate from '../../components/Icons/Rotate';
-import AppContext from '../../context';
+import appDataManager from '../../static/appDataManager';
 
 export interface DeveloperToolsProps {
     onRenderPage? : (page? : JSX.Element) => void
 }
 
 function DeveloperTools(props: DeveloperToolsProps) {
-
     const { onRenderPage } = props;
-
-    const { loadingPage } = useContext(AppContext);
-
-	const { t } = useTranslation();
-    const dispatch = useDispatch();
+    const appProps = appDataManager.get();
+    const { loadingPage } = appProps;
+    console.log({ appProps });
+	const { t            } = useTranslation();
+    const   dispatch       = useDispatch();
 
     function TriggerErrorMessage() {
-
         const [ errorType, setErrorType ] = useState<number>(500);
         const [ errorMsg , setErrorMsg  ] = useState<string>("");
 
@@ -57,7 +55,7 @@ function DeveloperTools(props: DeveloperToolsProps) {
                     api : "dev-tools",
                     status: ApiExecStatus.Ok
                 }));
-            }, 10200)
+            }, 10200);
         }
         
         return  (
@@ -70,26 +68,20 @@ function DeveloperTools(props: DeveloperToolsProps) {
                     </div>
                 </form>
             </Panel>
-            
         );
     }
    
-
     function ShowLoadingPage() {
-
         const [ show, setShow ] = useState<boolean>(false);
-
-        const showLoadingPage = () => {
+        const showLoadingPage   = () => {
             const toShow = !show;
             setShow(toShow);
-
             if(toShow && loadingPage) {
                 onRenderPage?.call(null, loadingPage)
             } else {
                 onRenderPage?.call(null);
             }
         }
-
         return (
             <Panel className='dev-tools__show-load-page' type={PanelType.Box} title={t("dev-tools.show-load-page.title")}>
                 <div className='align-center button-field'>
@@ -100,10 +92,8 @@ function DeveloperTools(props: DeveloperToolsProps) {
     }
 
     function ShowApiLoadingState () {
-
         const [ show, setShow ] = useState<boolean>(false);
-
-        const showApiState = () => {
+        const showApiState      = () => {
             const toShow = !show;
             setShow(toShow);
             if (toShow) {
@@ -130,7 +120,7 @@ function DeveloperTools(props: DeveloperToolsProps) {
 
     function DisplayIcons() {
         const [ slashed, setSlashed ] = useState<boolean>(false);
-        const [ rotate , setRotate  ] = useState<number>(0);
+        const [ rotate , setRotate  ] = useState<number >(0);
 
         interface DisplayIconProps {
             name     : string,
@@ -163,7 +153,7 @@ function DeveloperTools(props: DeveloperToolsProps) {
             <Panel className='dev-tools__display-icons' type={PanelType.Box} title={t("dev-tools.display-icons.title")}>
                 <nav>
                     <IconButton borderless hint={t("dev-tools.display-icons.slash") } icon={<IconSlash/>} activated={slashed} onClick={() => setSlashed(!slashed)}/>
-                    <IconButton borderless hint={t("dev-tools.display-icons.rotate")} icon={<IconRotate rotate={rotate}/>} activated={rotate !== 0} onClick={doRotate}/>
+                    <IconButton borderless hint={t("dev-tools.display-icons.rotate")} icon={<IconRotate   activated={rotate !== 0} rotate={rotate}/>} onClick={doRotate}/>
                 </nav>
                 <ul>
                     {renderIcons(Icons,  { slashed, doNotAnimate : true, rotate }, renderIcon)}
@@ -179,7 +169,7 @@ function DeveloperTools(props: DeveloperToolsProps) {
     }
 
     return (
-        <Panel icon={<IconBug/>} className="dev-tools" closable title={t("dev-tools.title")} cheatCoded={cheatCodedSequence} >
+        <Panel icon={<IconBug/>} className="dev-tools" visible={false} closable title={t("dev-tools.title")} cheatCoded={cheatCodedSequence} >
             <TriggerErrorMessage/>
             <ShowLoadingPage />
             <ShowApiLoadingState/>

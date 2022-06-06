@@ -10,5 +10,3 @@ reactI18Next.useTranslation = () => {
 };
 
 module.exports = reactI18Next;
-
-export default {};
