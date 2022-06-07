@@ -55,6 +55,10 @@ main {
 .page { 
     padding: 0 calc($def-padding * 4);
     position: relative;
+
+    @media screen and (max-width: $bp-mobile-portrait)  {
+        padding: 0;
+    } 
 }
 
 .align-center {
