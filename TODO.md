@@ -13,7 +13,7 @@
 ## In progress
 
 - [ ] testing for all components
-  - [ ] base icon
+  - [x] base icon
   - [ ] numeric input
   - [ ] panel
   - [ ] unprotected route

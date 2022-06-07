@@ -32,6 +32,9 @@ h4, h5, h6, strong, .strong {
 
 h1 {
     font-size: 1.5em;
+    @media screen and (max-width: $bp-mobile-portrait)  {
+        margin-top: 0;
+    } 
 }
 
 h3 {

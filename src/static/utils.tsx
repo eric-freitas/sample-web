@@ -13,6 +13,10 @@ export type SimpleCallback = () => void;
 
 export type OptionalString = string | null | undefined;
 
+export type DynamicProps = {
+    [key: string]   : any
+}
+
 export const joinClassNames = (...args: OptionalString[]): string => {
     return args.filter(e => !!(e?.trim())).map(e => e?.replace(/\s+/g, "__")).join(" ");
 }

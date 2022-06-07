@@ -1,6 +1,7 @@
+/* eslint-disable testing-library/no-container */
+/* eslint-disable testing-library/no-node-access */
 import 'jest-extended';
 import React from 'react';
-import * as ReactDOM from "react-dom";
 import Icon from '../../src/components/Icons/Icon';
 import { render } from '@testing-library/react'; 
 import userEvent from '@testing-library/user-event';
