@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/sample-web/static/css/main.8bc915dc.css",
-    "main.js": "/sample-web/static/js/main.50098c27.js",
+    "main.css": "/sample-web/static/css/main.da8e308d.css",
+    "main.js": "/sample-web/static/js/main.63c7f4d3.js",
     "static/media/Montserrat-ExtraBoldItalic.svg": "/sample-web/static/media/Montserrat-ExtraBoldItalic.ca09023166f5c516ba4a.svg",
     "static/media/Montserrat-SemiBoldItalic.svg": "/sample-web/static/media/Montserrat-SemiBoldItalic.c920631319ba9faf6bd1.svg",
     "static/media/Montserrat-BoldItalic.svg": "/sample-web/static/media/Montserrat-BoldItalic.7185fa35870a3632b25f.svg",
@@ -206,11 +206,11 @@
     "static/media/Poppins-Black.woff2": "/sample-web/static/media/Poppins-Black.9f8a4a5f1e0fe91ec9f7.woff2",
     "index.html": "/sample-web/index.html",
     "static/media/getFetch.cjs": "/sample-web/static/media/getFetch.c780682470504fffbd04.cjs",
-    "main.8bc915dc.css.map": "/sample-web/static/css/main.8bc915dc.css.map",
-    "main.50098c27.js.map": "/sample-web/static/js/main.50098c27.js.map"
+    "main.da8e308d.css.map": "/sample-web/static/css/main.da8e308d.css.map",
+    "main.63c7f4d3.js.map": "/sample-web/static/js/main.63c7f4d3.js.map"
   },
   "entrypoints": [
-    "static/css/main.8bc915dc.css",
-    "static/js/main.50098c27.js"
+    "static/css/main.da8e308d.css",
+    "static/js/main.63c7f4d3.js"
   ]
 }
