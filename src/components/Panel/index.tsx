@@ -57,7 +57,7 @@ const Panel: React.FC<PanelProps> = ({ children, ...props }) =>  {
                         <h2>{title}</h2>
                     </span>
                     <RenderIfTrue condition={!!closable}>
-                        <IconButton icon={<IconClose/>} onClick={onClick} borderless/>
+                        <IconButton className='panel__close-button' icon={<IconClose/>} onClick={onClick} borderless/>
                     </RenderIfTrue>
                 </header>
                 
