@@ -8,27 +8,33 @@ import Routes from './routes';
 import App from './App'
 import AppProps from './models/AppProps'
 
-import rootReducer from './reducers'
+import appReducer from './reducers'
 
 import './style.scss';
 import './fonts.scss';
-import './i18n';
+import appActions from './actions';
 
-const store = configureStore({
-	reducer: rootReducer
-});
+function MainApp() {
 
-const appData : AppProps = {
-	loadingPage : <LoadingPage />,
-	routes	    : <Routes/>
+	const store = configureStore({
+		reducer: appReducer
+	});
+
+	const appData : AppProps = {
+		loadingPage : <LoadingPage />,
+		routes	    : <Routes/>,
+		actions		: appActions
+	}
+
+	return (
+		<React.StrictMode>
+			<Provider store={store}>
+				<App  {...appData} />
+			</Provider>
+		</React.StrictMode>
+	);
 }
 
-ReactDOM.render(
-	<React.StrictMode>
-		<Provider store={store}>
-			<App  {...appData} />
-		</Provider>
-	</React.StrictMode>,
-	document.getElementById('root')
-);
+const root = document.getElementById('root');
+ReactDOM.render(<MainApp/>,	root);
 

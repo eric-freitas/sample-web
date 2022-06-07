@@ -2,10 +2,12 @@ import { combineReducers } from 'redux'
 
 import currentUser from './currentUser'
 import apiExec from './apiExec'
+import foobar from './foobar';
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
     currentUser,
-    apiExec
+    apiExec,
+    foobar
 })
 
-export default rootReducer
+export default appReducer

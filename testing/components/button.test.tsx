@@ -1,3 +1,6 @@
+/* eslint-disable testing-library/no-container */
+/* eslint-disable testing-library/no-unnecessary-act */
+/* eslint-disable testing-library/no-node-access */
 import 'jest-extended/all'
 import '@testing-library/jest-dom';
 import React from 'react';

@@ -1,9 +1,12 @@
+/* eslint-disable testing-library/no-container */
+/* eslint-disable testing-library/no-unnecessary-act */
+/* eslint-disable testing-library/no-node-access */
 import 'jest-extended/all';
 import React from 'react';
 import * as redux from 'react-redux';
 import ApiErrorMsg from '../../src/components/ApiErrorMsg';
-import allActions from '../../src/actions';
-import rootReducer from '../../src/reducers'
+import allActions from '../defaultActions';
+import rootReducer from '../defaultReducer'
 import { configureStore } from '@reduxjs/toolkit';
 
 import { ApiExecStatus } from '../../src/models/ApiExec';

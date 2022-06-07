@@ -1,7 +1,6 @@
 import React, { useState }  from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-import allActions from '../../actions';
 import Button from '../../components/Button';
 import { CheatCodeRevealingProps } from '../../components/CheatCodeRevealing';
 import IconButton from '../../components/IconButton';
@@ -27,18 +26,19 @@ export interface DeveloperToolsProps {
 
 function DeveloperTools(props: DeveloperToolsProps) {
     const { onRenderPage } = props;
-    const appProps = appDataManager.get();
-    const { loadingPage } = appProps;
-    console.log({ appProps });
-	const { t            } = useTranslation();
+    const { t            } = useTranslation();
     const   dispatch       = useDispatch();
+
+    const appProps = appDataManager.get();
+    const { loadingPage, actions } = appProps ?? {};
+    const appActions = actions ?? {};
 
     function TriggerErrorMessage() {
         const [ errorType, setErrorType ] = useState<number>(500);
         const [ errorMsg , setErrorMsg  ] = useState<string>("");
 
         const triggerErrorMsg = async() => {
-            dispatch(allActions.apiExec.setApiStatus({
+            dispatch(appActions.apiExec?.setApiStatus({
                 api : "dev-tools",
                 status: ApiExecStatus.Error,
                 error : {
@@ -51,7 +51,7 @@ function DeveloperTools(props: DeveloperToolsProps) {
                 }
             }));
             setTimeout(()=> {
-                dispatch(allActions.apiExec.setApiStatus({
+                dispatch(appActions.apiExec?.setApiStatus({
                     api : "dev-tools",
                     status: ApiExecStatus.Ok
                 }));
@@ -97,12 +97,12 @@ function DeveloperTools(props: DeveloperToolsProps) {
             const toShow = !show;
             setShow(toShow);
             if (toShow) {
-                dispatch(allActions.apiExec.setApiStatus({
+                dispatch(appActions.apiExec?.setApiStatus({
                     api : "api-loading-state",
                     status: ApiExecStatus.Init
                 }));
             } else {
-                dispatch(allActions.apiExec.setApiStatus({
+                dispatch(appActions.apiExec?.setApiStatus({
                     api : "api-loading-state",
                     status: ApiExecStatus.Ok
                 }));

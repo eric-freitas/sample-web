@@ -5,6 +5,9 @@ import ApiStatusLoading from './components/ApiStatus';
 import DeveloperTools from './sections/DeveloperTools';
 import AppProps from './models/AppProps';
 import appDataManager from './static/appDataManager';
+import DefaultLoadingPage from './components/DefLoadingPage';
+import { useTranslation } from 'react-i18next';
+import i18nStart from './i18n';
 
 /*	const currentUser = useSelector((state:AppState) => state.currentUser);
 	useEffect(() => {
@@ -41,18 +44,22 @@ function MainPage(props: InitialSectionProps) {
 }
 
 export default function App(props: AppProps) {
-	const { loadingPage } = props;
-	appDataManager.set(props);
+	let { loadingPage } = props ?? {};
+	loadingPage = loadingPage ?? <DefaultLoadingPage />
+	appDataManager.set({ ...props, loadingPage });
 
 	let onChangePage : SetPageToRenderCallback;
-
 	const onRef = (c: SetPageToRenderCallback) => {
 		onChangePage = c;
 	}
-
 	const onRenderPage = (newPage? : JSX.Element) => {
 		onChangePage?.call(null, newPage);
 	};
+
+    const translation = useTranslation();
+	if (!translation.i18n.t) {
+		i18nStart({ fallbackLanguage: 'en', language: 'pt-BR'});
+	}
 	
 	return (
 		<Suspense fallback={loadingPage}>

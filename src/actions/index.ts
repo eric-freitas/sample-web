@@ -1,8 +1,9 @@
 import apiExec from './apiExec'
 import userActions  from './userActions'
+import foobarAction from './foobar';
 
-const allActions = {
-    apiExec, userActions
+const appActions = {
+    apiExec, userActions, foobarAction
 }
 
-export default allActions
+export default appActions

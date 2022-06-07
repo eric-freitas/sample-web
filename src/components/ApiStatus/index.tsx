@@ -8,6 +8,7 @@ import RenderIfTrue from '../RenderIfTrue';
 import './index.scss';
 
 export default function ApiStatusLoading () {
+
     const apiStatus = 
         useSelector( (state: AppState) => state.apiExec )
             ?.find(e => 

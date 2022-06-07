@@ -1,10 +1,13 @@
+/* eslint-disable testing-library/no-container */
+/* eslint-disable testing-library/no-unnecessary-act */
+/* eslint-disable testing-library/no-node-access */
 import 'jest-extended/all';
 import React from 'react';
 import ApiStatus from '../../src/components/ApiStatus';
 import { configureStore } from '@reduxjs/toolkit';
-import rootReducer from '../../src/reducers';
+import rootReducer from '../defaultReducer'
 import { Provider } from 'react-redux';
-import allActions from '../../src/actions';
+import allActions from '../defaultActions';
 import { ApiExecStatus } from '../../src/models/ApiExec';
 import { render } from '@testing-library/react';
 import { sleep } from '../../src/static/utils';
